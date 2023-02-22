@@ -20,7 +20,7 @@ PhoneBook::PhoneBook(){
 
 PhoneBook::~PhoneBook(){}
 
-void	putstr(std::string tmp)
+void	putstr(std::string tmp)		
 {
 	if (tmp.size() > 10)
 	{
@@ -31,7 +31,7 @@ void	putstr(std::string tmp)
         return ;
 }
 
-void PhoneBook::addContact()
+void PhoneBook::addContact()			//method/function definition outside the class
 {
     if (index >= MAX_CONTACTS)
     index = 0;
