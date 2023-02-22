@@ -15,9 +15,9 @@
 
 int main()
 {
-    PhoneBook PB;
+    PhoneBook PB;           // object PB of class PhoneBook
     std::string choice;
-    PB.index = 0;
+    PB.index = 0;           // access attribute int index
     
     while (1)
     {
