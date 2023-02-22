@@ -13,7 +13,7 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(){				//constructor with parameters
+PhoneBook::PhoneBook(){				//constructor definition outside the class
 	totalContacts = 0;
     Contact person[MAX_CONTACTS];
 }
