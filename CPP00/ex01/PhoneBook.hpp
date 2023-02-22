@@ -17,15 +17,15 @@
 # include <string>
 # include "Contact.hpp"
 
-class   PhoneBook {
+class   PhoneBook { 				// the class
             static const int MAX_CONTACTS = 8;
             Contact person[MAX_CONTACTS];
             int totalContacts;
 
-        public:
+        public:					//access specifier
             PhoneBook();
 	        ~PhoneBook();
-            int index;
+            int index;				//attribute (int variable)
             int selection;
             void addContact();
             void displayContacts();
