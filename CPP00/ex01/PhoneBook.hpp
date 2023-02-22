@@ -24,7 +24,7 @@ class   PhoneBook { 				// the class
 
         public:					// access specifier everything after this is public
             PhoneBook();			// constructor declaration
-	        ~PhoneBook();			// destructer
+	        ~PhoneBook();			// destructor
             int index;				// attribute (int variable)
             int selection;
             void addContact();			// method or function declaration that belongs to the class
