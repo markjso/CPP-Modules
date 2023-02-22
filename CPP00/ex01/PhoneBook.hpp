@@ -23,7 +23,7 @@ class   PhoneBook { 				// the class
             int totalContacts;
 
         public:					//access specifier
-            PhoneBook();			// constructer
+            PhoneBook();			// constructor declaration
 	        ~PhoneBook();			// destructer
             int index;				//attribute (int variable)
             int selection;
