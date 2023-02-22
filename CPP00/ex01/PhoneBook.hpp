@@ -18,16 +18,16 @@
 # include "Contact.hpp"
 
 class   PhoneBook { 				// the class
-            static const int MAX_CONTACTS = 8;
-            Contact person[MAX_CONTACTS];
-            int totalContacts;
+            static const int MAX_CONTACTS = 8;	// private attributes
+            Contact person[MAX_CONTACTS];	// creates an array of person on the Contact class
+            int totalContacts;			// this can then access the attributes in the Contact class
 
-        public:					//access specifier
+        public:					// access specifier everything after this is public
             PhoneBook();			// constructor declaration
 	        ~PhoneBook();			// destructer
-            int index;				//attribute (int variable)
+            int index;				// attribute (int variable)
             int selection;
-            void addContact();			//method or function declaration that belongs to the class
+            void addContact();			// method or function declaration that belongs to the class
             void displayContacts();
             void displayContactInfo();
 
