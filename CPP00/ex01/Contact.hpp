@@ -18,8 +18,6 @@
 
 class Contact {			// the class
 public:				// access specifier
-    Contact();			// constructer
-	~Contact();		// destructer
     std::string     firstname;	// attribute (string variable)
     std::string     lastname;
     std::string     nickname;
