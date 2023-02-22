@@ -23,11 +23,11 @@ class   PhoneBook { 				// the class
             int totalContacts;
 
         public:					//access specifier
-            PhoneBook();
-	        ~PhoneBook();
+            PhoneBook();			// constructer
+	        ~PhoneBook();			// destructer
             int index;				//attribute (int variable)
             int selection;
-            void addContact();
+            void addContact();			//method or function that belongs to the class
             void displayContacts();
             void displayContactInfo();
 
