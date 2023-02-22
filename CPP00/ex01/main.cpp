@@ -30,7 +30,7 @@ int main()
         std::cin >> choice;
         if (choice == "ADD") 
         {
-            PB.addContact();
+            PB.addContact();    // call the method or function of the class
         }
         else if (choice == "SEARCH")
         {
