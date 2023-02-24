@@ -36,7 +36,7 @@ void PhoneBook::addContact()			//method/function definition outside the class
     if (index >= MAX_CONTACTS)
     index = 0;
     std::cout << "Enter First Name: \n";
-    std::getline(std::cin >> std::ws, person[index].firstname);
+    std::getline(std::cin >> std::ws, person[index].firstname);	//getline will not skip over a blank character
     std::cout << "Enter Last Name: \n";
     std::getline(std::cin >> std::ws, person[index].lastname);
     std::cout << "Enter a Nickname: \n";
