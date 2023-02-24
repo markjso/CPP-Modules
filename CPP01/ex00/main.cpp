@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 16:50:26 by jmarks            #+#    #+#             */
-/*   Updated: 2023/02/22 16:51:02 by jmarks           ###   ########.fr       */
+/*   Created: 2023/02/22 16:53:30 by jmarks            #+#    #+#             */
+/*   Updated: 2023/02/22 16:53:33 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie( std::string name ){}
-Zombie::~Zombie(){}
-
-std::string Zombie::getName()
+int main()
 {
-    return (name);
-}
-
-void Zombie::announce (void)
-{
-    std::cout << "Enter the name of your zombie: ";
-    std::cin >> name;
-    std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    std::cout << getName() << " is destroyed....."
-    << std::endl;
-    return ;
+    std::string name;
+    Zombie ZB( name );
+    name = ZB.getName();
+    Zombie zombie1( name );
+    Zombie *zombie2;
+    
+    zombie1.announce();
+    randomChump( name );
+    zombie2 = newZombie( name );
+    zombie2->announce();
+    delete zombie2;
 }
