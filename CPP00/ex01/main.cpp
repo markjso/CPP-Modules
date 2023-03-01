@@ -19,7 +19,7 @@ int main()
     std::string choice;
     PB.index = 0;           // access attribute int index
     
-    while (1)
+    while (1)               //keep waiting for user input
     {
         std::cout << "\n";
         std::cout << "MAIN MENU\n";
@@ -30,7 +30,7 @@ int main()
         std::cin >> choice;
         if (choice == "ADD") 
         {
-            PB.addContact();    // call the method or function of the class
+            PB.addContact();    // call the method or function of the class using the object PB
         }
         else if (choice == "SEARCH")
         {
