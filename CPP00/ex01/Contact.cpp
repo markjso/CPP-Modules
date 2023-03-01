@@ -13,8 +13,8 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-Contact::Contact(){}
-Contact::~Contact(){}
+Contact::Contact(){}	//constructor
+Contact::~Contact(){}	//destructor
 
 void Contact::displayContactInfo(){
     std::cout << "\n";
