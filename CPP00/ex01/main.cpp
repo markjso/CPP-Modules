@@ -13,13 +13,12 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-int main()
-{
-    PhoneBook PB;           // object PB of class PhoneBook
+int main(){
+    PhoneBook PB;
     std::string choice;
-    PB.index = 0;           // access attribute int index
+    PB.index = 0;
     
-    while (1)               //keep waiting for user input
+    while (1) 
     {
         std::cout << "\n";
         std::cout << "MAIN MENU\n";
@@ -28,13 +27,13 @@ int main()
         std::cout << "EXIT - exit the phonebook\n";
         std::cout << "Type your selection: ";
         std::cin >> choice;
-        if (choice == "ADD") 
+        if (choice == "ADD" || choice == "add") 
         {
-            PB.addContact();    // call the method or function of the class using the object PB
+            PB.addContact();
         }
-        else if (choice == "SEARCH")
+        else if (choice == "SEARCH" || choice == "search")
         {
-            PB.displayContacts();
+            PB.searchContacts();
         }
         else if (choice == "EXIT" || choice == "exit")
         {

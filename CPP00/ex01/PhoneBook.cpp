@@ -13,15 +13,15 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(){				//constructor definition outside the class
+PhoneBook::PhoneBook(){
 	totalContacts = 0;
+    indexContact = 0;
     Contact person[MAX_CONTACTS];
 }
 
 PhoneBook::~PhoneBook(){}
 
-void	putstr(std::string tmp)		
-{
+void	putstr(std::string tmp){
 	if (tmp.size() > 10)
 	{
 		tmp.resize(9);
@@ -31,27 +31,21 @@ void	putstr(std::string tmp)
         return ;
 }
 
-void PhoneBook::addContact()			//method/function definition outside the class
-{
-    if (index >= MAX_CONTACTS)
-    index = 0;
-    std::cout << "Enter First Name: \n";
-    std::getline(std::cin >> std::ws, person[index].firstname);	//getline will not skip over a blank character
-    std::cout << "Enter Last Name: \n";
-    std::getline(std::cin >> std::ws, person[index].lastname);
-    std::cout << "Enter a Nickname: \n";
-    std::getline(std::cin >> std::ws, person[index].nickname);
-    std::cout << "Enter Phone Number: \n";
-    std::getline(std::cin >> std::ws, person[index].number);
-    std::cout << "Enter your darkest secret: \n";
-    std::getline(std::cin >> std::ws, person[index].secret);
-    index++;
-    if (totalContacts < 8)
-    totalContacts++;
+void PhoneBook::addContact(){
+    Contact newContact;
+    if (this->indexContact >= this->MAX_CONTACTS)
+    this->indexContact = 0;
+    person[indexContact] = newContact;
+    newContact.getData();
+    indexContact++;
+    if (this->totalContacts < 8)
+    this->totalContacts++;
     std::cout << "Contact successfully saved." << std::endl;
+    return ;
+    displayContactInfo();
 }
 
-void PhoneBook::displayContacts(){
+void PhoneBook::searchContacts(){
     if (totalContacts == 0)
     {
         std::cout <<"Error, no contacts exist, please ADD one" << std::endl;
@@ -61,30 +55,29 @@ void PhoneBook::displayContacts(){
   	<< "   Index  |First Name| Last Name| Nickname |\n"
     << "  -----------------------------------------|\n";
     for (int i = 0; i < totalContacts; i++)
-    {
-		std::cout << std::setw(10) << std::right << i + 1 << "|";
-        putstr(person[i].firstname);
-        putstr(person[i].lastname);
-        putstr(person[i].nickname);
-        std::cout << "\n";
-    }
+    std::cout << std::setw(10) << std::right << i + 1 << "|";
+    putstr(person[indexContact].getFirst());   
+    putstr(person[indexContact].getLast());
+    putstr(person[indexContact].getNickname());
+    std::cout << person[indexContact].getFirst() << std::endl;
+    std::cout << std::endl; 
     std::cout << "Enter Index No : \n";
     std::cin >> selection;
     selection = selection - 1;
-    if (selection >= totalContacts || selection < 0)
-    {
-        std::cout << "Error, no record for the selected contact" << std::endl;
-        return ;
-    }
+    // if (selection >= totalContacts || selection < 0)
+    // {
+    //     std::cout << "Error, no record for the selected contact" << std::endl;
+    //     return ;
+    // }
     displayContactInfo();
 }
 
 void PhoneBook::displayContactInfo(){
     std::cout << "\n";
     std::cout << "INDEX CARD\n";
-    std::cout << "first name: " << person[selection].firstname << std::endl;
-	std::cout << "last name: " << person[selection].lastname << std::endl;
-    std::cout << "nickname: " << person[selection].nickname << std::endl;
-	std::cout << "ph number: " << person[selection].number << std::endl;
-	std::cout << "darkest secret: " << person[selection].secret << std::endl;
+    std::cout << "first name: " << person[selection].getFirst() << std::endl;
+	std::cout << "last name: " << person[selection].getLast() << std::endl;
+    std::cout << "nickname: " << person[selection].getNickname() << std::endl;
+	std::cout << "ph number: " << person[selection].getNumber() << std::endl;
+	std::cout << "darkest secret: " << person[selection].getSecret() << std::endl;
 }
