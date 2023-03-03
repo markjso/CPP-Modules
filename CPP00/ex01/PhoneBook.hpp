@@ -18,19 +18,21 @@
 # include "Contact.hpp"
 
 class   PhoneBook {
-            static const int MAX_CONTACTS = 8;
-            Contact person[MAX_CONTACTS];
+            //static const int MAX_CONTACTS = 8;
+            Contact person[8];
             int totalContacts;
             int indexContact;
 
         public:
             PhoneBook();
 	        ~PhoneBook();
+            void getData();
             int index;
             int selection;
             void addContact();
             void searchContacts();
-            void displayContactInfo();
+            void displayContactInfo( Contact person );
+            
 
 };
 #endif

@@ -27,13 +27,18 @@ class Contact {
     public:
 	    Contact();
 	    ~Contact();
-        void getData();
         std::string getFirst();
         std::string getLast();
         std::string getNickname();
         std::string getNumber();
         std::string getSecret();
+        void setFirst(std::string str);
+        void setLast(std::string str);
+        void setNickname(std::string str);
+        void setNumber(std::string str);
+        void setSecret(std::string str);
         void displayContacts();
+        
         
 };
 #endif
