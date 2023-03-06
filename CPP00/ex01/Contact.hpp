@@ -23,10 +23,9 @@ class Contact {
         std::string     nickname;
         std::string     number;
         std::string     secret;
-        int    index;
     public:
-	    Contact();
-	    ~Contact();
+            Contact();
+            ~Contact();
         std::string getFirst();
         std::string getLast();
         std::string getNickname();
@@ -37,8 +36,6 @@ class Contact {
         void setNickname(std::string str);
         void setNumber(std::string str);
         void setSecret(std::string str);
-        void displayContacts();
-        
-        
+
 };
 #endif
