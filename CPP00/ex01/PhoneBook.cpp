@@ -35,6 +35,9 @@ void    putstr(std::string tmp){
 }
 
 void PhoneBook::addContact(){
+/* the index of each contact is determined by the indexContact variable
+// This variable keeps track of the number of contacts that have
+// been added to the phone book so far, starting from 0. */
     Contact newContact;
     indexContact++;
     if (indexContact < 7){
