@@ -17,9 +17,9 @@
 #include "phonebook.hpp"
 
 PhoneBook::PhoneBook(){
-        totalContacts = 0;
-        indexContact = -1;
-        selection = 0;
+        totalContacts = 0; // totalContacts is used to keep track of the number of contacts currently in the phonebook
+        indexContact = -1; // keeps track of the index of the next contact to be added to the phonebook, 
+        selection = 0;  // stores the user's input of the index of the contact they want to display
  }
 
 PhoneBook::~PhoneBook(){}
@@ -66,7 +66,7 @@ void PhoneBook::addContact(){
     std::getline(std::cin, str);
     newContact.setSecret(str);
     person[totalContacts] = newContact;
-if (totalContacts < 8)
+if (totalContacts < 8)  
 totalContacts++;
     std::cout << "Contact successfully saved." << std::endl;
      return ;
