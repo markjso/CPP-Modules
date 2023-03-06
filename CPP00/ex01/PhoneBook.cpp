@@ -13,59 +13,59 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
+#include "contact.hpp"
+#include "phonebook.hpp"
+
 PhoneBook::PhoneBook(){
-	totalContacts = 0;
-    indexContact = 0;
+        totalContacts = 0;
+        indexContact = -1;
+        selection = 0;
  }
 
 PhoneBook::~PhoneBook(){}
 
-void	putstr(std::string tmp){
-	if (tmp.size() > 10)
-	{
-		tmp.resize(9);
-		tmp = tmp + ".";
-	}
-		std::cout << std::setw(10) << tmp << "|";
+void    putstr(std::string tmp){
+        if (tmp.size() > 10)
+        {
+                tmp.resize(9);
+                tmp = tmp + ".";
+        }
+                std::cout << std::setw(10) << tmp << "|";
         return ;
 }
 
-// void PhoneBook::addContact(){
-//     Contact newContact;
-//     if (indexContact >= 8)
-//     indexContact = 0;
-//     person[indexContact] = newContact;
-//     newContact.getData();
-//     indexContact++;
-//     if (totalContacts < 8)
-//     totalContacts++;
-//     std::cout << "Contact successfully saved." << std::endl;
-//     newContact.displayContactInfo();
-//     return ;
-// }
-
 void PhoneBook::addContact(){
-    std::string str;
-    str = "";
-    index = 0;
-    while (str == "")
-    {
-    std::cout << "Enter First Name: \n";
-    if (std::getline(std::cin, str) &&str !="")
-    person[index].setFirst(str);
+    Contact newContact;
+    indexContact++;
+    if (indexContact < 7){
+            indexContact = 0;
     }
-    // str = "";
-    // std::cout << "Enter Last Name: \n";
-    // std::cin >> person[index].setLast(str);
-    // std::cout << "Enter a Nickname: \n";
-    // std::cin >> person[index].setNickname(str);
-    // std::cout << "Enter Phone Number: \n";
-    // std::cin >> person[index].setNumber(str);
-    // std::cout << "Enter your darkest secret: \n";
-    // std::cin >> person[index].setSecret(str);
-    index++;
+
+    std::string str;
+    std::cout << "Enter First Name:" << std::endl;
+    std::cin.ignore();
+    std::getline(std::cin, str);
+    newContact.setFirst(str);
+
+    std::cout << "Enter Last Name:" << std::endl;
+    std::getline(std::cin, str);
+    newContact.setLast(str);
+
+    std::cout << "Enter a Nickname" << std::endl;
+    std::getline(std::cin, str);
+    newContact.setNickname(str);
+
+    std::cout << "Enter Phone Number:" << std::endl;
+    std::getline(std::cin, str);
+    newContact.setNumber(str);
+
+    std::cout << "Enter your darkest secret:" << std::endl;
+    std::getline(std::cin, str);
+    newContact.setSecret(str);
+    person[totalContacts] = newContact;
+if (totalContacts < 8)
+totalContacts++;
     std::cout << "Contact successfully saved." << std::endl;
-     displayContactInfo(person[index]);
      return ;
 }
 
@@ -76,16 +76,17 @@ void PhoneBook::searchContacts(){
         return ;
     }
     std::cout << "\n"
-  	<< "   Index  |First Name| Last Name| Nickname |\n"
+        << "   Index  |First Name| Last Name| Nickname |\n"
     << "  -----------------------------------------|\n";
-    // for (int i = 0; i < totalContacts; i++)
-    // {
-    //     std::cout << std::setw(10) << std::right << i + 1 << "|";
-    //     putstr(person[i].getFirst());   
-    //     putstr(person[indexContact].getLast());
-    //     putstr(person[indexContact].getNickname());
-    // }
-    std::cout << std::endl; 
+    for (int i = 0; i < totalContacts; i++)
+    {
+        std::cout << std::setw(10) << std::right << i + 1 << "|";
+        putstr(person[i].getFirst());
+        putstr(person[i].getLast());
+        putstr(person[i].getNickname());
+    std::cout << std::endl;
+    }
+    std::cout << std::endl;
     std::cout << "Enter Index No : \n";
     std::cin >> selection;
     selection = selection - 1;
@@ -94,15 +95,15 @@ void PhoneBook::searchContacts(){
         std::cout << "Error, no record for the selected contact" << std::endl;
         return ;
     }
-    displayContactInfo(person[selection]);
+    displayContactInfo(selection);
 }
 
-void PhoneBook::displayContactInfo(Contact person){
+void PhoneBook::displayContactInfo( int index ){
     std::cout << "\n";
     std::cout << "INDEX CARD\n";
-    std::cout << "first name: " << person.getFirst() << std::endl;
-	std::cout << "last name: " << person.getLast() << std::endl;
-    std::cout << "nickname: " << person.getNickname() << std::endl;
-	std::cout << "ph number: " << person.getNumber() << std::endl;
-	std::cout << "darkest secret: " << person.getSecret() << std::endl;
+    std::cout << "first name: " << person[index].getFirst() << std::endl;
+        std::cout << "last name: " << person[index].getLast() << std::endl;
+    std::cout << "nickname: " << person[index].getNickname() << std::endl;
+        std::cout << "ph number: " << person[index].getNumber() << std::endl;
+        std::cout << "darkest secret: " << person[index].getSecret() << std::endl;
 }
