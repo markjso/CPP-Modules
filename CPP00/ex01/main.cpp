@@ -16,9 +16,8 @@
 int main(){
     PhoneBook PB;
     std::string choice;
-    PB.index = 0;
-    
-    while (1) 
+
+    while (1)
     {
         std::cout << "\n";
         std::cout << "MAIN MENU\n";
@@ -27,7 +26,7 @@ int main(){
         std::cout << "EXIT - exit the phonebook\n";
         std::cout << "Type your selection: ";
         std::cin >> choice;
-        if (choice == "ADD" || choice == "add") 
+        if (choice == "ADD" || choice == "add")
         {
             PB.addContact();
         }
