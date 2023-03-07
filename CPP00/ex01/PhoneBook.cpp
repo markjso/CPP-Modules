@@ -40,7 +40,7 @@ void PhoneBook::addContact(){
 // been added to the phone book so far, starting from 0. */
     Contact newContact;
     indexContact++;
-    if (indexContact < 7){
+    if (indexContact > 7){
             indexContact = 0;
     }
 
