@@ -18,7 +18,7 @@
 
 PhoneBook::PhoneBook(){
         totalContacts = 0; // totalContacts is used to keep track of the number of contacts currently in the phonebook
-        indexContact = -1; // keeps track of the index of the next contact to be added to the phonebook, 
+        indexContact = 0; // keeps track of the index of the next contact to be added to the phonebook, 
         selection = 0;  // stores the user's input of the index of the contact they want to display
  }
 
@@ -34,17 +34,27 @@ void    putstr(std::string tmp){
         return ;
 }
 
+int is_digit(std::string str)
+{
+    for (int i = 0; i < str.length(); i++) {
+        if (!std::isdigit( str[i] )){
+            return 0;
+        }
+    }
+    return 1;
+}
+
 void PhoneBook::addContact(){
 /* the index of each contact is determined by the indexContact variable
 // This variable keeps track of the number of contacts that have
 // been added to the phone book so far, starting from 0. */
     Contact newContact;
-    indexContact++;
-    if (indexContact > 7){
-            indexContact = 0;
+    std::string str;
+    
+    if (indexContacts >= 8){
+    indexContacts = 0;
     }
 
-    std::string str;
     std::cout << "Enter First Name:" << std::endl;
     std::cin.ignore();
     std::getline(std::cin, str);
@@ -58,18 +68,27 @@ void PhoneBook::addContact(){
     std::getline(std::cin, str);
     newContact.setNickname(str);
 
-    std::cout << "Enter Phone Number:" << std::endl;
-    std::getline(std::cin, str);
+    while (1) {
+        std::cout << "Enter Phone Number:" << std::endl;
+        std::getline(std::cin >> std::ws, str);
+        {
+        if (is_digit(str) == 1)
+            break ;
+        }
+        std::cout << "Error, only numbers allowed" << std::endl;
+    }
     newContact.setNumber(str);
 
     std::cout << "Enter your darkest secret:" << std::endl;
     std::getline(std::cin, str);
     newContact.setSecret(str);
-    person[totalContacts] = newContact;
-if (totalContacts < 8)  
-totalContacts++;
+    person[indexContacts] = newContact;
     std::cout << "Contact successfully saved." << std::endl;
-     return ;
+        
+    indexContacts++;
+        if (totalContacts < 8)  
+        totalContacts++;
+    return ;
 }
 
 void PhoneBook::searchContacts(){
