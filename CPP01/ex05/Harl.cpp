@@ -46,6 +46,7 @@ void Harl::error( void )
 
 void Harl::complain( std::string level )
 {
+    Harl* obj;
     typedef void( Harl::*fptr)(void);
     std::string levels[4] = { "DEBUG", "INFO", "WARNING", "ERROR" }; 
     fptr complain[4] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
