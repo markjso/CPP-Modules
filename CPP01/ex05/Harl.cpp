@@ -18,21 +18,21 @@ Harl::~Harl() {}
 
 void Harl::debug( void )
 {
-    std::cout << "[ DEBUG ]" << std::endl
+    std::cout << "DEBUG" << std::endl
     << "I love having extra bacon for my burger" << std::endl;
     return ;
 }
 
 void Harl::info( void )
 {
-    std::cout << "[ INFO ]" << std::endl
+    std::cout << "INFO" << std::endl
     << "I cannot believe adding extra bacon costs more money" << std::endl;
     return ;
 }
 
 void Harl::warning( void )
 {
-    std::cout << "[ WARNING ]" << std::endl
+    std::cout << "WARNING" << std::endl
     << "I think I deserve some extra bacon for free" << std::endl;
     return ;
 }
