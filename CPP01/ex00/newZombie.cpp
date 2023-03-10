@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// the operater new allocates memory like malloc
+// the operater new allocates memory from heap
 // memory must be deleted when finished (see main)
 
 #include "Zombie.hpp"
