@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+// allocating Zombie objects called horde
 
 Zombie* zombieHorde( int N, std::string name )
 {
