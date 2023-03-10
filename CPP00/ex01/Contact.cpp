@@ -14,8 +14,10 @@
 #include "PhoneBook.hpp"
 
 Contact::Contact(){}
-
 Contact::~Contact(){}
+
+// the std::string get() functions return the appropriate input
+// the void set() functions save the input that is entered
 
 std::string Contact::getFirst(){
     return firstname;
