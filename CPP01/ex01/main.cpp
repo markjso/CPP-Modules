@@ -31,6 +31,7 @@ std::string getHordeName( void )
 }
 
 // call announce on each Zombie object of horde
+// need to delete [] horde as we have used new operator in zombieHorde function
 int main()
 {
     int nbr;
