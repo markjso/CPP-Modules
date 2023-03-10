@@ -39,25 +39,25 @@ std::string Contact::getSecret(){
 
 void	Contact::setFirst(std::string str)
 {
-	this->firstname = str;
+	firstname = str;
 }
 
 void	Contact::setLast(std::string str)
 {
-	this->lastname = str;
+	lastname = str;
 }
 
 void	Contact::setNickname(std::string str)
 {
-	this->nickname = str;
+	nickname = str;
 }
 
 void	Contact::setNumber(std::string str)
 {
-	this->number = str;
+	number = str;
 }
 
 void	Contact::setSecret(std::string str)
 {
-	this->secret = str;
+	secret = str;
 }
