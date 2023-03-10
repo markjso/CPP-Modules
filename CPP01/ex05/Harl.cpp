@@ -44,9 +44,13 @@ void Harl::error( void )
     return ;
 }
 
+// the Harl class has 4 functions for complain (DEBUG, INFO, WARNING, ERROR)
+// *ftpr is used to point to the appropriate member function for each of these levels
+// *obj is used to link these together
+
 void Harl::complain( std::string level )
 {
-    Harl* obj;
+    Harl *obj;
     typedef void( Harl::*fptr)(void);
     std::string levels[4] = { "DEBUG", "INFO", "WARNING", "ERROR" }; 
     fptr complain[4] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
@@ -54,7 +58,7 @@ void Harl::complain( std::string level )
     for(int i = 0; i < 4; i++) {
         if (levels[i] == level)
         {
-            (this->*complain[i])();
+            (obj->complain[i])();
             return ;
         }
     }
