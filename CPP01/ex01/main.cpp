@@ -30,6 +30,7 @@ std::string getHordeName( void )
 	return ( name );
 }
 
+// call announce on each Zombie object of horde
 int main()
 {
     int nbr;
