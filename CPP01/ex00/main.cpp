@@ -24,5 +24,5 @@ int main()
     randomChump( name );
     zombie2 = newZombie( name );
     zombie2->announce();
-    delete zombie2;
+    delete zombie2;                 //deletes the memory allocation called by new in the newZombie function
 }
