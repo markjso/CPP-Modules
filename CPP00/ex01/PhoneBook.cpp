@@ -24,6 +24,8 @@ PhoneBook::PhoneBook(){
 
 PhoneBook::~PhoneBook(){}
 
+/* using the iomanip library setw sets the width of the column to be 10.
+if the string size is greater than 10 it resizes it to 9 and adds a "." */
 void    putstr(std::string tmp){
         if (tmp.size() > 10)
         {
@@ -34,6 +36,7 @@ void    putstr(std::string tmp){
         return ;
 }
 
+// Checks whether a string is only composed of numeric characters.
 int is_digit(std::string str)
 {
     for (int i = 0; i < str.length(); i++) {
@@ -44,10 +47,17 @@ int is_digit(std::string str)
     return 1;
 }
 
-void PhoneBook::addContact(){
+
 /* the index of each contact is determined by the indexContact variable
-// This variable keeps track of the number of contacts that have
-// been added to the phone book so far, starting from 0. */
+This variable keeps track of the number of contacts that have been added 
+to the phone book so far, starting from 0. If it reaches 8 resets to 0.
+The input is saved int newContact object by calling member function setFirst etc.
+getline skips over whitespace instead of stopping on it. When the user enters a 
+phone number the is_digit function checks it is only numbers and returns an error
+if it is not */
+
+void PhoneBook::addContact(){
+
     Contact newContact;
     std::string str;
     
@@ -90,6 +100,10 @@ void PhoneBook::addContact(){
         totalContacts++;
     return ;
 }
+/* this is the grid to display the contacts returned from SEARCH
+if no contacts exist returns an error message. Uses a loop to get()
+all the entries stored on the person object and display them. Prompts the
+user for a selection(index) number. If the index exists calls displayContactInfo. */
 
 void PhoneBook::searchContacts(){
    if (totalContacts == 0)
@@ -111,7 +125,13 @@ void PhoneBook::searchContacts(){
     std::cout << std::endl;
     std::cout << "Enter Index No : \n";
     std::cin >> selection;
-    selection = selection - 1;
+    if (std::cin.fail()) {
+            std::cout << "Error, must be a number" <<std::endl;
+            std::cin.clear();
+            std::cin.ignore(); 
+            return ;
+        }
+    selection--;
     if (selection >= totalContacts || selection < 0)
     {
         std::cout << "Error, no record for the selected contact" << std::endl;
@@ -119,6 +139,9 @@ void PhoneBook::searchContacts(){
     }
     displayContactInfo(selection);
 }
+
+/* displays the Contact details on an INDEX CARD based on the input received 
+from selection(index) */
 
 void PhoneBook::displayContactInfo( int index ){
     std::cout << "\n";
