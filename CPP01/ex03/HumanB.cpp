@@ -13,6 +13,10 @@
 #include "Weapon.hpp"
 #include "HumanB.hpp"
 
+// because we have set Weapon to be a pointer in HumanB we can set it to NULL
+// to indicate that it is not present. If the weapon is not present the attack()
+// function will still work and return the else condition
+
 HumanB::HumanB( std::string name) : _name(name), _weapon(NULL) {}
 
 HumanB::~HumanB() {
