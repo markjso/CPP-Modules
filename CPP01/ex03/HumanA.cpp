@@ -13,6 +13,8 @@
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 
+// have used a reference to Weapon in this class as HumanA must always use a weapon
+
 HumanA::HumanA( std::string name, Weapon &weapon )
     : _name(name), _weapon(weapon) {};
 
