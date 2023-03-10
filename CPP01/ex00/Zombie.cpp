@@ -13,7 +13,9 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie( std::string name ){}
-Zombie::~Zombie(){}
+Zombie::~Zombie(){
+std::cout << getName() << " is destroyed....." << std::endl;
+}
 
 std::string Zombie::getName()
 {
@@ -25,7 +27,5 @@ void Zombie::announce (void)
     std::cout << "Enter the name of your zombie: ";
     std::cin >> name;
     std::cout << getName() << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    std::cout << getName() << " is destroyed....."
-    << std::endl;
     return ;
 }
