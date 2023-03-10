@@ -13,6 +13,9 @@
 #include <string>
 #include <iostream>
 
+// shows how pointers and references work by printing the address of a variable
+// the pointer and reference to it, and the values of each of those
+
 int main( void )
 {
     std::string str = "HI THIS IS BRAIN";
