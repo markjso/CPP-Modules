@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
+//memoray allocated on stack
 
 void randomChump( std::string name ) 
 {
