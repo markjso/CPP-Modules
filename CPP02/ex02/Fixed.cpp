@@ -96,8 +96,8 @@ bool Fixed::operator>=(const Fixed& rhs)
 
 // Arithmetric Operator Overload Functions
 
-Fixed Fixed::operator +(Fixed const &rhs) const {
-    Fixed tmp;
+Fixed Fixed::operator +(Fixed const &rhs) const {           // & references the object on the right of the operator function
+    Fixed tmp;                                              // const means the operator function can't modify it
     tmp = ( Fixed( this->toFloat() + rhs.toFloat() ) );
     return tmp;
 }
