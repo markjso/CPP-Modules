@@ -122,20 +122,20 @@ Fixed Fixed::operator /(Fixed const &rhs) const{
 
 // Unary Operator Overload Functions
 
-Fixed Fixed::operator++( int ) {
-    this->_raw++;
+Fixed Fixed::operator++( int ) {                // (int) is the syntax used for using unary opertaors as post-increment
+    this->_raw++;                               // it is not a parameter. this->_raw points to this instance of _raw
     return (*this);
 }
 
-Fixed Fixed::operator--( int ) {
+Fixed Fixed::operator--( int ) {                
     this->_raw--;
     return (*this);
 }
 
-Fixed Fixed::operator++() {
+Fixed Fixed::operator++() {                  // create an object tmp and give it the attribute of _raw
     Fixed tmp;
-    tmp._raw = ++(_raw);
-    return (tmp);
+    tmp._raw = ++(_raw);                     // _raw belongs to the object calling the function in main.cpp 
+    return (tmp);                            // while tmp._raw belongs to the tmp object                            
 }
 
 Fixed Fixed::operator--() {
