@@ -50,6 +50,8 @@ Fixed& Fixed::operator =( const Fixed& copy ){
     return *this;
 }
 
+// Comparison Operator Overload Functions
+
 bool Fixed::operator==(const Fixed& rhs)
 {
     if ( this->_raw == rhs.getRawBits())
@@ -92,6 +94,8 @@ bool Fixed::operator>=(const Fixed& rhs)
     return (false);
 }
 
+// Arithmetric Operator Overload Functions
+
 Fixed Fixed::operator +(Fixed const &rhs) const {
     Fixed tmp;
     tmp = ( Fixed( this->toFloat() + rhs.toFloat() ) );
@@ -115,6 +119,8 @@ Fixed Fixed::operator /(Fixed const &rhs) const{
     tmp = ( Fixed( this->toFloat() / rhs.toFloat() ) );
     return tmp;
 }
+
+// Unary Operator Overload Functions
 
 Fixed Fixed::operator++( int ) {
     this->_raw++;
