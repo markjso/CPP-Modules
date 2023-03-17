@@ -165,14 +165,14 @@ Fixed const &Fixed::min( Fixed const &lhs, Fixed const &rhs) {
 
 Fixed& Fixed::max( Fixed& lhs, Fixed& rhs) {
     if (lhs.getRawBits() < rhs.getRawBits())
-        return (lhs);
-    else
         return (rhs);
+    else
+        return (lhs);
 }
 
 Fixed const &Fixed::max( Fixed const &lhs, Fixed const &rhs) {
-    if (lhs.getRawBits() > rhs.getRawBits())
-        return (lhs);
-    else
+    if (lhs.getRawBits() < rhs.getRawBits())
         return (rhs);
+    else
+        return (lhs);
 }
