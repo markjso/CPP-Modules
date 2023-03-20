@@ -16,9 +16,9 @@ int main()
 {
     Harl complainsalot;
 
-    complainsalot.complain("DEBUG");
-    complainsalot.complain("INFO");
-    complainsalot.complain("WARNING");
-    complainsalot.complain("ERROR");
+    complainsALot.complain("DEBUG");
+    complainsALot.complain("INFO");
+    complainsALot.complain("WARNING");
+    complainsALot.complain("ERROR");
 
 }
