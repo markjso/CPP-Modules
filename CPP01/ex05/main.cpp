@@ -14,7 +14,7 @@
 
 int main()
 {
-    Harl complainsalot;
+    Harl complainsALot;
 
     complainsALot.complain("DEBUG");
     complainsALot.complain("INFO");
