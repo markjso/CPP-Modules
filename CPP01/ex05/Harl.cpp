@@ -44,7 +44,7 @@ void Harl::error( void )
     return ;
 }
 
-// the Harl class has 4 functions for complain (DEBUG, INFO, WARNING, ERROR)
+// the Harl class has 4 member functions for complain (DEBUG, INFO, WARNING, ERROR)
 // *ftpr is used to point to the appropriate member function for each of these levels
 // *obj is used to link these together
 
