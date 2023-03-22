@@ -24,7 +24,7 @@ HumanB::~HumanB() {
 }
 
 void HumanB::setWeapon( Weapon &weapon ) {
-    weapon = &weapon;
+    _weapon = &weapon;
     return ;
 }
 
