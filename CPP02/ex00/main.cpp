@@ -14,7 +14,7 @@
 
 /* Copy constructor is called when a new object is created
 from an existing object as a copy of the existing object.
-Assignment operater is called when an already initialsed
+Copy assignment operater is called when an already initialsed
 object is assigned a new value from another existing object. */
 
 int main( void ) {
