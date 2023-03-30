@@ -17,7 +17,7 @@
 
 /* A copy constructor is used to initalise the members of
 a newly created object by copying the members of an 
-already existing object. The object &copy is created 
+already existing object. The object 'copy' is created 
 taking a reference to an object of the same class as an
 argument. Copy constructor creates new memory storage
 every time it is called whilst the assignment operator does
