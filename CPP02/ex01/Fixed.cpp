@@ -22,11 +22,22 @@ Fixed::Fixed( const Fixed& copy ) {
     return ;
 }
 
-Fixed::Fixed( int const nbr ) : _raw( nbr << _fractionBits ) {
+/* initialises the _raw variable by converting the int nbr to
+the fixed-point binary representation using_fracionalBits. So
+nbr(10) is 00000000 00000000 00000000 00001010 in 32-bit integer
+format. Shift 8 bits to the left (or multiply by 2^8) it becomes
+00000000 00000000 00001010 0000000 or 2560 stored internally */
+
+Fixed::Fixed( int const nbr ) : _raw( nbr << _fractionalBits ) {
     std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed( float const f ) : _raw(roundf(f *(1 << _fractionBits))) {
+/* initialises the _raw variable by converting the floating-point value
+'f' to the fixed-point binary representation using _fractionalBits and
+then rounding to the nearest integer. So multiply 'f(42.42)' by 2^8(256) which is 10859.52
+which is rounded to 10859 and stored internally */
+
+Fixed::Fixed( float const f ) : _raw(roundf(f *(1 << _fractionalBits))) {
     std::cout << "Float constructor called" << std::endl;
 }
 
@@ -50,10 +61,17 @@ void Fixed::setRawBits( int const raw ){
     this->_raw = raw;
 }
 
+/* the toFloat() function does the opposite of what is happening
+in the float constructor. It divides the stored number by 2^8 and 
+returns it */
+
 float Fixed::toFloat( void ) const {
 
     return ( (float)this->_raw / (1 << _fractionBits) );
 }
+
+/* the toInt() function does the opposite of what is happening
+in the int constructor. It shifts it to the right by 2^8. */
 
 int Fixed::toInt( void ) const {
     return ( this->_raw >> Fixed::_fractionBits );
