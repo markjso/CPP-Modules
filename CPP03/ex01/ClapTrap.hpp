@@ -16,7 +16,7 @@
 # include <iostream>
 
 class   ClapTrap {
-    protected:
+    protected:                          // protected is used instead of private for inherited classes
             std::string _name;
             int _hitPoints;
             int _energyPoints;
