@@ -27,19 +27,25 @@ FragTrap::FragTrap( std::string name ) : ClapTrap(name) {
 }
 
 FragTrap::FragTrap( const FragTrap& copy ) : ClapTrap(copy) {
-    std::cout << "ScavTrap copy constructor called on " << copy._name << std::endl;
+    std::cout << "FragTrap copy constructor called on " << copy._name << std::endl;
     return ;
 }
 
 FragTrap::~FragTrap() {
-    std::cout << "The FragTrap " << this->_name << " is destroyed." << std::endl;
+    std::cout << "FragTrap " << this->_name << " is destroyed." << std::endl;
 }
 
 FragTrap& FragTrap::operator =( const FragTrap& copy ) {
     ClapTrap::operator=(copy);
+    std::cout << "FragTrap copy assignment operator called on " << copy._name << std::endl;
 	return *this;
 }
 
 void FragTrap::highFivesGuys() {
+    if (_hitPoints <= 0)
+    {
+        std::cout << "FragTrap " << this->_name << " is dead and cannot high five!" << std::endl;
+        return ; 
+    } 
     std::cout << "Hey FragTrap " << this->_name << " high five!" << std::endl;
 }

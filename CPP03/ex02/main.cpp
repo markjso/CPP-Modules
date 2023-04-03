@@ -20,6 +20,8 @@ int main()
         ClapTrap codswallop("Codswallop");
         ScavTrap bunkum("Bunkum");
         FragTrap tommyrot("Tommyrot");
+        FragTrap hogwash;
+        hogwash = tommyrot;
 
         tommyrot.highFivesGuys();
         codswallop.attack("Tommyrot");
@@ -30,6 +32,9 @@ int main()
         bunkum.attack("Codswallop");
         codswallop.takeDamage(50);
         codswallop.beRepaired(30);
+        tommyrot.highFivesGuys();
+        // codswallop.gaurdGate(); function will not work
+        // codswallop.highFivesGuys(); function will not work
     }
     return (0);
 }
