@@ -17,6 +17,7 @@ int main()
     {
         ClapTrap codswallop("Codswallop");
         ClapTrap hokum("Hokum");
+
         codswallop.attack("Hokum");
         hokum.takeDamage(2);
         hokum.beRepaired(1);
