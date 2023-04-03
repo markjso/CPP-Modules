@@ -32,7 +32,7 @@ ScavTrap::ScavTrap( const ScavTrap& copy ) : ClapTrap(copy) {
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << "The ScavTrap " << this->_name << " is destroyed." << std::endl;
+    std::cout << "ScavTrap " << this->_name << " is destroyed." << std::endl;
 }
 
 ScavTrap& ScavTrap::operator =( const ScavTrap& copy ) {
@@ -44,13 +44,19 @@ void ScavTrap::attack( const std::string& target )
 {
     if (_hitPoints <= 0)
     {
-        std::cout << this->_name << " is already dead!" << std::endl;
+        std::cout << "ScavTrap " << this->_name << " cannot attack as he is already dead!" << std::endl;
         return ; 
     }
+    else
+    std::cout << "ScavTrap " << this->_name << " strikes " << target << std::endl;
     _energyPoints--;
-    std::cout << "ScavTrap " << this->_name << " attacks " << target << std::endl;
 }
 
 void ScavTrap::guardGate() {
+    if (_hitPoints <= 0)
+    {
+        std::cout << "ScavTrap " << this->_name << " is dead and cannot gaurd the gate!" << std::endl;
+        return ; 
+    }
     std::cout << "Scavtrap " << this->_name << " is now in gate keeper mode" << std::endl;
 }

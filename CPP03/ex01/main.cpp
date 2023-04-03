@@ -16,16 +16,19 @@
 int main()
 {
     {
+        ClapTrap poppycock("Poppycock");
         ClapTrap codswallop("Codswallop");
+        ClapTrap bull = poppycock;
         ScavTrap bunkum("Bunkum");
         codswallop.attack("Bunkum");
-        bunkum.takeDamage(20);
+        bunkum.takeDamage(110);
         bunkum.beRepaired(10);
         bunkum.attack("Codswallop");
-        codswallop.attack("Bunkum");
-        bunkum.takeDamage(30);
-        bunkum.beRepaired(20);
+        poppycock.attack("Codswallop");
+        codswallop.takeDamage(30);
+        codswallop.beRepaired(20);
         bunkum.guardGate();
+        // poppycock.guardGate(); this function will not work
     }
     return (0);
 }

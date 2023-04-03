@@ -16,12 +16,12 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
-class   ScavTrap : public ClapTrap {          // derived class ScavTrap is created
+class   ScavTrap : public ClapTrap {
   
     public:
-        ScavTrap ( void );                    // it will inherit constructors and destructors
-        ScavTrap ( std::string name );        // from ClapTrap but has it's own which will print
-        ScavTrap ( const ScavTrap& copy );    // different messages
+        ScavTrap ( void );
+        ScavTrap ( std::string name );
+        ScavTrap ( const ScavTrap& copy );
         ~ScavTrap ( void );
         ScavTrap& operator=( const ScavTrap& copy );
         void attack( const std:: string& target );

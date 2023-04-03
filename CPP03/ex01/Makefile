@@ -18,16 +18,16 @@ SRCS = ClapTrap.cpp \
 
 OBJS=$(SRCS:.cpp=.o)
 
-CC=g++
+CC = g++
 
-CFLAGS=-Wall -Wextra -Werror -I -std=c++98
+CFLAGS = -Wall -Wextra -Werror -I -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CLFAGS) -o $(NAME) $(OBJS) 
 	
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
