@@ -15,7 +15,9 @@
 
 # include <iostream>
 # include "ClapTrap.hpp"
-# include "ScavTrap.hpp"
+
+/* FragTrap is also a derived class of the 
+base class ClapTrap. */
 
 class   FragTrap : public ClapTrap {
   
@@ -25,7 +27,7 @@ class   FragTrap : public ClapTrap {
         FragTrap ( const FragTrap& copy );
         ~FragTrap ( void );
         FragTrap& operator=( const FragTrap& copy );
-        void highFivesGuys( void );
+        void highFivesGuys( void );     // this member function cannot be accessed by ClapTrap                 
 };
 
 #endif
