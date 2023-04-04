@@ -18,10 +18,10 @@ int main()
 {
     {
         ClapTrap codswallop("Codswallop");
-        ScavTrap bunkum("Bunkum");
-        FragTrap tommyrot("Tommyrot");
-        FragTrap hogwash;
-        hogwash = tommyrot;
+        ScavTrap bunkum("Bunkum");  // calls ClapTrap & ScavTrap string constructor
+        FragTrap tommyrot("Tommyrot");  // calls ClapTrap & FragTrap string constructor
+        FragTrap hogwash;          // calls default ClapTrap & FragTrap constructor         
+        hogwash = tommyrot;        // calls ClapTrap & FragTrap copy assignment operator 
 
         tommyrot.highFivesGuys();
         codswallop.attack("Tommyrot");
