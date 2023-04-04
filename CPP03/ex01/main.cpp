@@ -18,9 +18,9 @@ int main()
     {
         ClapTrap poppycock("Poppycock");
         ClapTrap codswallop("Codswallop");
-        ClapTrap bull = poppycock;
-        ScavTrap bunkum("Bunkum");
-        codswallop.attack("Bunkum");
+        ClapTrap bull = poppycock;          // this will call the ClapTrap copy constructor
+        ScavTrap bunkum("Bunkum");          // this will call the ClapTrap string constructor
+        codswallop.attack("Bunkum");        // as well as the ScarTrap string constructor    
         bunkum.takeDamage(110);
         bunkum.beRepaired(10);
         bunkum.attack("Codswallop");
@@ -28,7 +28,7 @@ int main()
         codswallop.takeDamage(30);
         codswallop.beRepaired(20);
         bunkum.guardGate();
-        // poppycock.guardGate(); this function will not work
+        // poppycock.guardGate(); this function will not work as guardGate is not a ClapTrap memberfunction
     }
     return (0);
 }
