@@ -17,8 +17,9 @@
 # include "ClapTrap.hpp"
 
 /* derived class ScavTrap inherited from ClapTrap class
-inherits its constructors and deconstructors and has
-access to it's public members. */
+inherits its constructors and deconstructors and its 
+public and protected members become public and 
+protected members of the derived class. */
 
 class   ScavTrap : public ClapTrap {
   
