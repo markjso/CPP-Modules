@@ -28,7 +28,7 @@ class   ClapTrap {
         ClapTrap ( const ClapTrap& copy );
         ~ClapTrap ( void );
         ClapTrap& operator=( const ClapTrap& copy );
-        void attack( const std:: string& target );
+        void attack( const std:: string& target );  //because it is a reference target must always have a value
         void takeDamage( unsigned int amount );
         void beRepaired( unsigned int amount );
 };
