@@ -27,7 +27,7 @@ class   FragTrap : public ClapTrap {
         FragTrap ( const FragTrap& copy );
         ~FragTrap ( void );
         FragTrap& operator=( const FragTrap& copy );
-        void highFivesGuys( void );     // this member function cannot be accessed by ClapTrap                 
+        void highFivesGuys( void );     // this member function cannot be accessed by ClapTrap or ScavTrap                
 };
 
 #endif
