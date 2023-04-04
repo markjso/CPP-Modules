@@ -16,6 +16,10 @@
 # include <iostream>
 # include "ClapTrap.hpp"
 
+/* derived class ScavTrap inherited from ClapTrap class
+inherits its constructors and deconstructors and has
+access to it's public members. */
+
 class   ScavTrap : public ClapTrap {
   
     public:
