@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/27 11:13:58 by jmarks            #+#    #+#             */
+/*   Updated: 2023/03/27 11:14:00 by jmarks           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 
-Animal::Animal( ) : _type("Unkown Animal") {
-    std::cout << "Animal default constructor called" << std::endl;
+Animal::Animal( ) : _type("Default Animal") {
+    std::cout << "Default Animal constructor called" << std::endl;
 }
 
 Animal::Animal( const Animal& copy) {
@@ -17,7 +29,7 @@ Animal::Animal(std::string type) : _type(type)
 }
 
 Animal::~Animal() {
-    std::cout << "Animal deconstrutor called" << std::endl;
+    std::cout << "Animal " << _type << " deconstrutor called" << std::endl;
 }
 
 Animal & Animal::operator=(Animal const & copy)
@@ -37,5 +49,3 @@ void Animal::makeSound() const {
     std::cout << this->_type << " makes no sound." << std::endl;
 	return ;
 }	
-
-

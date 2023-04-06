@@ -1,40 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/27 11:20:50 by jmarks            #+#    #+#             */
+/*   Updated: 2023/03/27 11:20:52 by jmarks           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
-	const Animal *	animal = new Animal();
-		std::cout << "Animal type: " << animal->getType() << std::endl;
-		animal->makeSound();
-		delete animal;
-		std::cout << std::endl;
-
-	const Animal *	dog = new Dog();
-		std::cout << "Dog type: " << dog->getType() << std::endl;
-		dog->makeSound();
-		delete dog;
-		std::cout << std::endl;
-
-	const Animal *	cat = new Cat();
-		std::cout << "Cat type: " << cat->getType() << std::endl;
-		cat->makeSound();
-		delete cat;
-		std::cout << std::endl;	
-	
-	const Animal* meta = new Animal();
+	std::cout << std::endl;
+    const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+    const WrongAnimal* k = new WrongAnimal();
+    const WrongAnimal* l = new WrongCat();
+   
+	std::cout << j->getType() << " : ";
+    j->makeSound();
+	std::cout << i->getType() << " : ";
+    i->makeSound();
+    meta->makeSound();
+    std::cout << k->getType() << " : ";
+    k->makeSound();
+    std::cout << l->getType() << " : ";
+    l->makeSound();
 	std::cout << std::endl;
-	delete j;
+	
+    delete j;
 	delete i;
 	delete meta;
-
+    delete k;
+    delete l;
+    
 	return 0;
 }
+

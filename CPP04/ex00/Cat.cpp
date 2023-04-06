@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/27 11:14:31 by jmarks            #+#    #+#             */
+/*   Updated: 2023/03/27 11:14:32 by jmarks           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Cat.hpp"
 
-Cat::Cat() : Animal ("Cat") {
+Cat::Cat() : Animal () {
 std::cout << "Cat default constructor called" << std::endl;
 this->_type = "Cat";
 }
@@ -17,11 +29,13 @@ Cat::~Cat() {
 
 Cat& Cat::operator=( const Cat& copy ){
     std::cout << "Cat copy assignment operator called" << std::endl;
+    if (this != copy)
     this->_type = copy.getType();
     return *this;
 }
 
 void Cat::makeSound() const {
-    std::cout << this->_type << " says meow meow." << std::endl;
+    std::cout << "says meow meow." << std::endl;
     return ;
 }
+
