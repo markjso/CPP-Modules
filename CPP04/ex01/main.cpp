@@ -15,9 +15,15 @@
 #include "Cat.hpp"
 #include "Brain.hpp"
 
+void    a(void) {
+    system("leaks animals");
+}
+
 int main()
 {
-   Animal* arrayofAnimals[4];
+   atexit(a);
+
+   const Animal* arrayofAnimals[4];
    
     std::cout << std::endl;
     std::cout << "Array of animal objects(4), half cats and half dogs." <<std::endl;
@@ -48,14 +54,13 @@ int main()
     std::cout << "Getting ideas from Brain for Cats and Dogs" <<std::endl;
     std::cout << "------------------------------------------" << std::endl;
 
-    int index = 0;
-    Cat * cuddles = new Cat();
-    cuddles->getBrain()->setIdeas(index, "chase mice");
-    Cat * copyCat = new Cat(*cuddles);
+    Cat* cuddles = new Cat();
+    cuddles->getBrain()->setIdeas("chase mice", 100);
+    Cat* copyCat = new Cat(*cuddles);
     std::cout << std::endl;
     std::cout << "cuddles idea: "<< cuddles->getBrain()->getIdeas(0) << std::endl;
     std::cout << "copyCats idea: "<< copyCat->getBrain()->getIdeas(0) << std::endl;
-    cuddles->getBrain()->setIdeas(index, "play with string");
+    cuddles->getBrain()->setIdeas("play with string", 100);
     std::cout << "cuddles new idea: "<< cuddles->getBrain()->getIdeas(0) << std::endl;
     std::cout << "copyCats new idea: "<< copyCat->getBrain()->getIdeas(0) << std::endl;
     std::cout << std::endl;
@@ -64,14 +69,13 @@ int main()
     std::cout << "copyCats idea should now be the same as cuddles: "<< copyCat->getBrain()->getIdeas(0) << std::endl;
     std::cout << std::endl;
 
-    index = 1;
-    Dog * fred = new Dog();
-    fred->getBrain()->setIdeas(index, "roll over");
-    Dog * copyDog = new Dog(*fred);
+    Dog* fred = new Dog();
+    fred->getBrain()->setIdeas("roll over", 100);
+    Dog* copyDog = new Dog(*fred);
     std::cout << std::endl;
     std::cout << "freds idea: "<< fred->getBrain()->getIdeas(1) << std::endl;
     std::cout << "copyDogs idea: "<< copyDog->getBrain()->getIdeas(1) << std::endl;
-    fred->getBrain()->setIdeas(index, "chase the stick");
+    fred->getBrain()->setIdeas("chase the stick", 100);
     std::cout << "freds new idea: "<< fred->getBrain()->getIdeas(1) << std::endl;
     std::cout << "copyDogs new idea: "<< copyDog->getBrain()->getIdeas(1) << std::endl;
     std::cout << std::endl;
@@ -80,6 +84,15 @@ int main()
     delete copyCat;
     delete fred;
     delete copyDog;
+    std::cout << std::endl;
+
+    std::cout << "Subject Tests - should not create a leak" <<std::endl;
+    std::cout << std::endl;
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+        
+    delete j;
+    delete i;
 
 	return 0;
 }
