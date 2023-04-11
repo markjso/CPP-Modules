@@ -16,6 +16,10 @@
 # include <iostream>
 # include "Animal.hpp"
 
+/* Note that if a function is marked as virtual in the base class
+all matching overrides in derived classes are also implicitly considered virtual, 
+even if they are not explicitly marked as such. */
+
 class   Cat : public Animal {
 
     public:
@@ -23,7 +27,7 @@ class   Cat : public Animal {
         Cat ( const Cat& copy );
         ~Cat ( void );
         Cat& operator=( const Cat& copy );
-        void makeSound() const;
+        virtual void makeSound() const;
 };
 
 #endif
