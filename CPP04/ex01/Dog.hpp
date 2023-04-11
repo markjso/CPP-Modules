@@ -28,7 +28,7 @@ class   Dog : public Animal {
         ~Dog ( void );
         Dog& operator=( const Dog& copy );
         Brain * getBrain() const;
-        void makeSound( ) const;
+        virtual void makeSound( ) const;
 };
 
 #endif
