@@ -10,13 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AAnimal.hpp"
+#include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "Brain.hpp"
 
+void    a(void) {
+    system("leaks animals");
+}
+
 int main()
 {
+   atexit(a);
+	
    AAnimal* arrayofAnimals[4];
    
     std::cout << std::endl;
