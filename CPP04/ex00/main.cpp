@@ -16,6 +16,11 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+/* virtual function resolution only works when a virtual member function 
+is called through a pointer or reference to a class type object. This 
+works because the compiler can differentiate the type of the pointer or 
+reference from the type of the object being pointed to or referenced. */
+
 int main()
 {
 	std::cout << std::endl;
