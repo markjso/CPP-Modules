@@ -36,7 +36,6 @@ Brain& Brain::operator=( const Brain& copy ){
 }
 
 void Brain::setIdeas( int& index, const std::string &idea) {
-    // int i;
     if (index >= 0 && index < 100) {
         _ideas[index] = idea;
     } else {
