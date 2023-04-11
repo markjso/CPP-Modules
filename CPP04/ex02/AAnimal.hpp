@@ -25,7 +25,7 @@ class   AAnimal {
         AAnimal ( const AAnimal& copy );
         virtual ~AAnimal ( void );
         AAnimal& operator=( const AAnimal& copy );
-        virtual void makeSound() const = 0;
+        virtual void makeSound() const = 0;	// is now an abstract function
 	std::string getType() const;
 };
 
