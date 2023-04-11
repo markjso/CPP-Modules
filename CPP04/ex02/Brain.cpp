@@ -35,13 +35,10 @@ Brain& Brain::operator=( const Brain& copy ){
     return *this;
 }
 
-void Brain::setIdeas( int& index, const std::string &idea) {
-    // int i;
-    if (index >= 0 && index < 100) {
+void Brain::setIdeas(const std::string idea, int index) {
+    for (int i = 0; i < index; i++) {
         _ideas[index] = idea;
-    } else {
-        std::cout <<"Invalid index" << std::endl;
-    }
+    } 
 }
 
 std::string Brain::getIdeas(int index) const {
