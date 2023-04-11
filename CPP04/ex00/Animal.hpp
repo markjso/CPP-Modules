@@ -26,8 +26,8 @@ class   Animal {
         Animal ( const Animal& copy );
         virtual ~Animal ( void );
         Animal& operator=( const Animal& copy );
-        virtual void makeSound() const;
-	std::string getType() const;
+        virtual void makeSound() const;		// virtual allows us to provide a different version of a function in the derived class
+	std::string getType() const;		// this is polymorphism
 };
 
 #endif
