@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmarks <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 13:26:07 by jmarks            #+#    #+#              #
-#    Updated: 2023/12/19 11:45:11 by jmarks           ###   ########.fr        #
+#    Updated: 2023/12/27 17:30:23 by jmarks           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = bureaucrat
+NAME = form
 
 SRCS = Bureaucrat.cpp \
 	   AForm.cpp \

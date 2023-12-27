@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:45:30 by jmarks            #+#    #+#             */
-/*   Updated: 2023/12/19 11:45:32 by jmarks           ###   ########.fr       */
+/*   Updated: 2023/12/27 17:11:56 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <iostream>
 # include <stdexcept>
 # include <string>
+# include "Bureaucrat.hpp"
 
 class Bureaucrat;
 

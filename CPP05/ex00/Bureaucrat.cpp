@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:30:02 by jmarks            #+#    #+#             */
-/*   Updated: 2023/12/18 13:30:05 by jmarks           ###   ########.fr       */
+/*   Updated: 2023/12/27 17:19:22 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,15 @@ Bureaucrat::Bureaucrat( std::string const &name, int grade ) : _name(name)
 		throw (Bureaucrat::GradeTooLowException());	
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat const &copy ) 
+Bureaucrat::Bureaucrat( Bureaucrat const &copy ) : _name(copy._name) 
 {
 	*this = copy;
 }
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat const &Bureaucrat::operator =( const Bureaucrat &copy )
+Bureaucrat const &Bureaucrat::operator=( const Bureaucrat &copy )
 {
-	this->_name = copy._name;
 	this->_grade = copy._grade;
 	return *this;
 }

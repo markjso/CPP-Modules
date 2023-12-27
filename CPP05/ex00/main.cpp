@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:30:10 by jmarks            #+#    #+#             */
-/*   Updated: 2023/12/18 13:30:12 by jmarks           ###   ########.fr       */
+/*   Updated: 2023/12/27 16:34:06 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(void)
 		catch (const std::exception &e)
 		{
 			std::cout << "Alex's grade is 0" << std::endl;
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
 		}
 	}
 
@@ -36,7 +36,7 @@ int main(void)
 		catch (const std::exception &e)
 		{
 			std::cout << "Tim's grade is 151" << std::endl;
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
 		}
 	}
 
@@ -54,7 +54,7 @@ int main(void)
 		}
 		catch (std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
 		}
 	}
 
@@ -72,7 +72,7 @@ int main(void)
 		}
 		catch (std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
 		}
 	}
 	return (0);

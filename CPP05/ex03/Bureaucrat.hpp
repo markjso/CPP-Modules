@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:28:19 by jmarks            #+#    #+#             */
-/*   Updated: 2023/12/18 13:28:27 by jmarks           ###   ########.fr       */
+/*   Updated: 2023/12/28 08:40:53 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class AForm;
 
 class Bureaucrat {
 private:
-		std::string	_name;
+		std::string	const _name;
 		int			_grade;
 public:
 	Bureaucrat ( void );

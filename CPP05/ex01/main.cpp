@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:30:10 by jmarks            #+#    #+#             */
-/*   Updated: 2023/12/18 13:30:12 by jmarks           ###   ########.fr       */
+/*   Updated: 2023/12/27 17:09:21 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 int main(void)
@@ -24,7 +23,7 @@ int main(void)
 		catch (const std::exception &e)
 		{
 			std::cout << "Form F42 sign grade is 0, execute grade is 5" << std::endl;
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
 		}
 	}
 
@@ -40,7 +39,7 @@ int main(void)
 		}
 		catch (std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
 		}
 	}
 
@@ -56,7 +55,7 @@ int main(void)
 		}
 		catch (std::exception &e)
 		{
-			std::cout << e.what() << std::endl;
+			std::cerr << e.what() << std::endl;
 		}
 	}
 	return (0);

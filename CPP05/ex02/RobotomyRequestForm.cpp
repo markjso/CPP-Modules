@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:49:05 by jmarks            #+#    #+#             */
-/*   Updated: 2023/12/19 14:49:07 by jmarks           ###   ########.fr       */
+/*   Updated: 2023/12/27 18:12:48 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ void RobotomyRequestForm::execute( const Bureaucrat &executor ) const
 {
 	(void)executor;
 	std::cout << "Bzzzzzzzzzzzzzzzzzzzz" << std::endl;
-	if (rand() % 2)
-		std::cout << getName() << " has been robotomized successfully" << std::endl;
+	int success = std::rand() % 2;
+	if (success == 1)
+	{
+		std::cout << getTarget() << " has been robotomized successfully" << std::endl;
+	}
 	else
-		std::cout << "robotomy failed" << std::endl;	
+		std::cout << getTarget() << " robotomy failed" << std::endl;	
 }
