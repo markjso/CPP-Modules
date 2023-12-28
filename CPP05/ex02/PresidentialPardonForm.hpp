@@ -15,6 +15,7 @@
 # include <iostream>
 # include <stdexcept>
 # include <string>
+# include "AForm.hpp"
 
 class Bureaucrat;
 
@@ -27,8 +28,8 @@ public:
 	PresidentialPardonForm ( std::string target );
 	PresidentialPardonForm(const PresidentialPardonForm& copy );
 	~PresidentialPardonForm( void );
-	void execute(Bureaucrat const & executor) const;
 	std::string getTarget( void ) const;
+	void beExecuted( void ) const;
 	PresidentialPardonForm const &operator=(PresidentialPardonForm const &copy);
 };
 

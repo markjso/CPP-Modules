@@ -11,16 +11,38 @@
 /* ************************************************************************** */
 
 #include "Intern.hpp"
+#include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 int main(void)
 {
-	Intern	someRandomIntern;
-	AForm*	rrf;
+	Intern	random;
+	Bureaucrat	ben("Ben", 42);
+	AForm	*form;
 
-	rrf = someRandomIntern.makeForm("RRF", "Bender");
-	std::cout << std::endl;
+	form = random.makeForm("RRF", "Bender");
+	delete form;
+	form = random.makeForm("SCF", "Rose");
+	delete form;
+	form = random.makeForm("PPF", "Bill");
+	delete form;
+	form = random.makeForm("AAA", "John");
+	delete form;
 
-	delete rrf;
+	std::cout << "------------------------------------" << std::endl;
 
+	std::cout << ben << std::endl;
+	form = random.makeForm("SCF", "Rose");
+	// form->execute(ben);
+	ben.executeForm(*form);
+	delete form;
+	form = random.makeForm("RRF", "Bender");
+	ben.signForm(*form);
+	ben.executeForm(*form);
+	delete form;
+	form = random.makeForm("PPF", "Bill");
+	ben.signForm(*form);
+	ben.executeForm(*form);
+	delete form;
 	return (0);
 }

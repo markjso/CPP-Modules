@@ -18,7 +18,7 @@
 int main(void)
 {
 	Bureaucrat alex("Alex", 3);
-	Bureaucrat lou("Lou", 42);
+	Bureaucrat lou("Lou", 24);
 	ShrubberyCreationForm shrubbery("Hydrangea");
 	RobotomyRequestForm robotomy("C3PO");
 	PresidentialPardonForm president("Nixon");
@@ -33,7 +33,9 @@ int main(void)
 	lou.executeForm(shrubbery);
 	alex.signForm(robotomy);
 	alex.executeForm(robotomy);
+	alex.executeForm(robotomy);
 	lou.signForm(robotomy);
+	lou.executeForm(robotomy);
 	lou.executeForm(robotomy);
 	alex.signForm(president);
 	alex.executeForm(president);

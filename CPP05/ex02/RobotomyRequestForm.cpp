@@ -11,24 +11,20 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void) : AForm(), _target("default") {}
+RobotomyRequestForm::RobotomyRequestForm(void) : AForm(), _target("C3PO") {}
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RRF", 72, 45), _target(target) {}
+RobotomyRequestForm::RobotomyRequestForm(std::string const target) : AForm("RRF", 72, 45), _target(target) {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy)
-{
-	*this = copy;
-}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) : AForm(copy), _target(copy._target) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 RobotomyRequestForm const &RobotomyRequestForm::operator =( const RobotomyRequestForm &copy )
 {
-	if (this != &copy)
-	this->_target = copy.getTarget();
+	AForm::operator=(copy);
+	this->_target = copy._target;
 	return *this;
 }
 
@@ -37,15 +33,11 @@ std::string	RobotomyRequestForm::getTarget() const
         return this->_target; 
 }
 
-void RobotomyRequestForm::execute( const Bureaucrat &executor ) const
+void RobotomyRequestForm::beExecuted( void ) const
 {
-	(void)executor;
 	std::cout << "Bzzzzzzzzzzzzzzzzzzzz" << std::endl;
-	int success = std::rand() % 2;
-	if (success == 1)
-	{
-		std::cout << getTarget() << " has been robotomized successfully" << std::endl;
-	}
+	if (std::rand() % 2)
+		std::cout << getName() << " has been robotomized successfully" << std::endl;
 	else
-		std::cout << getTarget() << " robotomy failed" << std::endl;	
+		std::cout << "robotomy failed" << std::endl;	
 }

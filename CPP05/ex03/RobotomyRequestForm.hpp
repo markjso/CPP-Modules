@@ -16,6 +16,7 @@
 # include <stdexcept>
 # include <string>
 # include <cstdlib>
+# include "AForm.hpp"
 
 class Bureaucrat;
 
@@ -25,11 +26,11 @@ private:
 		std::string	_target;
 public:
 	RobotomyRequestForm ( void );
-	RobotomyRequestForm ( std::string const target );
+	RobotomyRequestForm ( std::string target );
 	RobotomyRequestForm(const RobotomyRequestForm& copy );
 	~RobotomyRequestForm( void );
-	void execute(Bureaucrat const & executor) const;
 	std::string	getTarget() const;
+	void beExecuted( void ) const;
 	RobotomyRequestForm const &operator=(RobotomyRequestForm const &copy);
 };
 

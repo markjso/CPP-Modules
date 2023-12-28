@@ -20,7 +20,7 @@
 class Bureaucrat;
 
 class AForm {
-protected:
+private:
 		std::string const	_name;
 		bool				_isSigned;
 		int const			_signGrade;
@@ -36,7 +36,8 @@ public:
 	int const &getSignGrade( void ) const;
 	int const &getExecGrade( void ) const;
 	void beSigned(Bureaucrat &bureaucrat);
-	virtual void execute(Bureaucrat const & executor) const = 0;
+	void execute(Bureaucrat const & executor) const;
+	virtual void beExecuted(void) const = 0;
 	class GradeTooHighException : public std::exception 
 	{
 	public:
@@ -44,6 +45,12 @@ public:
 	};
 
 	class GradeTooLowException : public std::exception
+	{
+	public:
+		const char* what(void) const throw();
+	};
+
+	class FormNotSignedException : public std::exception
 	{
 	public:
 		const char* what(void) const throw();

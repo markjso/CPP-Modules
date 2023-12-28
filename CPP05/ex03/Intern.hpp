@@ -12,6 +12,7 @@
 
 #ifndef INTERN_HPP
 # define INTERN_HPP
+# include "AForm.hpp"
 # include "ShrubberyCreationForm.hpp"
 # include "RobotomyRequestForm.hpp"
 # include "PresidentialPardonForm.hpp"
@@ -23,7 +24,7 @@ public:
 	Intern (const Intern& copy );
 	~Intern( void );
 	Intern const &operator=(Intern const &copy);
-	AForm* makeForm(std::string name, std::string target);
+	AForm	*makeForm(const std::string &name, const std::string &target);
 };
 
 #endif

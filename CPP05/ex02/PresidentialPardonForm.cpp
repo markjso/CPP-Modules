@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(void) : AForm(), _target("default") {}
@@ -34,8 +33,7 @@ std::string	PresidentialPardonForm::getTarget() const
 	return this->_target; 
 }
 
-void PresidentialPardonForm::execute( const Bureaucrat &executor ) const
+void PresidentialPardonForm::beExecuted( void ) const
 {
-	(void)executor;
 	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

@@ -31,7 +31,7 @@ Bureaucrat::Bureaucrat( Bureaucrat const &copy ) : _name(copy._name)
 
 Bureaucrat::~Bureaucrat() {}
 
-Bureaucrat const &Bureaucrat::operator =( const Bureaucrat &copy )
+Bureaucrat const &Bureaucrat::operator=( const Bureaucrat &copy )
 {
 	this->_grade = copy._grade;
 	return *this;
@@ -78,17 +78,11 @@ void Bureaucrat::executeForm( AForm const & form)
 {
 	try
 	{
-		if (form.getExecGrade() > this->_grade)
-		{
-			std::cout << this->_name << " executed " << form.getName() << std::endl;
-			form.exectue(*this);
-		}
-		else
-			throw (Bureaucrat::GradeTooLowException());
+		form.execute(*this);
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << this->_name << " couldn't exectue form " << form.getName() <<  " because " << e.what() << std::endl;
+		std::cout << this->_name << " couldn't execute form " << form.getName() <<  " because " << e.what() << std::endl;
 	}
 }
 

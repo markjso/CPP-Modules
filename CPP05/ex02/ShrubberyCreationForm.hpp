@@ -28,9 +28,9 @@ public:
 	ShrubberyCreationForm ( std::string target );
 	ShrubberyCreationForm(const ShrubberyCreationForm& copy );
 	~ShrubberyCreationForm( void );
-	ShrubberyCreationForm const &operator=(ShrubberyCreationForm const &copy);
 	std::string	getTarget(void) const;
-	virtual void execute(Bureaucrat const & executor) const;
+	void beExecuted( void ) const;
+	ShrubberyCreationForm const &operator=(ShrubberyCreationForm const &copy);
 };
 
 #endif

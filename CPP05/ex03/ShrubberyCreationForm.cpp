@@ -11,12 +11,11 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm(), _target("hydrangea") {}
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm(), _target("default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : AForm("SCF", 145, 137), _target(target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("SCF", 145, 137), _target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy), _target(copy._target) {}
 
@@ -24,8 +23,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 ShrubberyCreationForm const &ShrubberyCreationForm::operator=( const ShrubberyCreationForm &copy )
 {
-	if (this != copy)
-	this->_target = copy.getTarget;
+	if (this != &copy)
+	this->_target = copy.getTarget();
 	return *this;
 }
 
@@ -34,7 +33,7 @@ std::string	ShrubberyCreationForm::getTarget() const
         return this->_target; 
 }
 
-void ShrubberyCreationForm::execute( const Bureaucrat &executor ) const
+void ShrubberyCreationForm::beExecuted(void) const
 {
 std::string tree =
         "       *      \n"
@@ -46,7 +45,7 @@ std::string tree =
         "    |*||*|     \n"
         "    |*||*|     \n";
 
-std::string target = this->getTarget() + "_shrubbery";
+std::string target = this->_target + "_shrubbery";
 std::ofstream file(target.c_str());
 if(file.fail())
 {
@@ -55,5 +54,5 @@ if(file.fail())
 }
 file << tree;
 file.close();
-std::cout << executor.getName() << " created a shrubbery" << std::endl;
+std::cout << this->_target << " shrubbery created." << std::endl;
 }

@@ -25,12 +25,12 @@ private:
 		std::string	_target;
 public:
 	ShrubberyCreationForm ( void );
-	ShrubberyCreationForm ( std::string const target );
+	ShrubberyCreationForm ( std::string target );
 	ShrubberyCreationForm(const ShrubberyCreationForm& copy );
 	~ShrubberyCreationForm( void );
-	ShrubberyCreationForm const &operator=(ShrubberyCreationForm const &copy);
 	std::string	getTarget(void) const;
-	void execute(Bureaucrat const & executor) const;
+	void beExecuted( void ) const;
+	ShrubberyCreationForm const &operator=(ShrubberyCreationForm const &copy);
 };
 
 #endif

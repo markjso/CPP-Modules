@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(void) : AForm(), _target("C3PO") {}
@@ -34,12 +33,11 @@ std::string	RobotomyRequestForm::getTarget() const
         return this->_target; 
 }
 
-void RobotomyRequestForm::execute( const Bureaucrat &executor ) const
+void RobotomyRequestForm::beExecuted( void ) const
 {
-	(void)executor;
 	std::cout << "Bzzzzzzzzzzzzzzzzzzzz" << std::endl;
-	if (rand() % 2)
-		std::cout << getName() << "has been robotomized successfully" << std::endl;
+	if (std::rand() % 2)
+		std::cout << getName() << " has been robotomized successfully" << std::endl;
 	else
 		std::cout << "robotomy failed" << std::endl;	
 }
