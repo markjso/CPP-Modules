@@ -13,7 +13,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm(), _target("default") {}
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm(), _target("SCF") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("SCF", 145, 137), _target(target) {}
 

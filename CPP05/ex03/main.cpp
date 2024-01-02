@@ -14,12 +14,19 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
+void    a(void) {
+    system("leaks intern");
+}
+
 int main(void)
 {
+//    atexit(a);
+
 	Intern	random;
 	Bureaucrat	ben("Ben", 42);
 	AForm	*form;
 
+	std::cout << std::endl;
 	form = random.makeForm("RRF", "Bender");
 	delete form;
 	form = random.makeForm("SCF", "Rose");
@@ -33,14 +40,17 @@ int main(void)
 
 	std::cout << ben << std::endl;
 	form = random.makeForm("SCF", "Rose");
-	// form->execute(ben);
+	std::cout << *form << std::endl;
+	ben.signForm(*form);
 	ben.executeForm(*form);
 	delete form;
 	form = random.makeForm("RRF", "Bender");
+	std::cout << *form << std::endl;
 	ben.signForm(*form);
 	ben.executeForm(*form);
 	delete form;
 	form = random.makeForm("PPF", "Bill");
+	std::cout << *form << std::endl;
 	ben.signForm(*form);
 	ben.executeForm(*form);
 	delete form;

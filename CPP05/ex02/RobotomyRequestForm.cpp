@@ -13,7 +13,7 @@
 #include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void) : AForm(), _target("C3PO") {}
+RobotomyRequestForm::RobotomyRequestForm(void) : AForm(), _target("RRF") {}
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const target) : AForm("RRF", 72, 45), _target(target) {}
 
@@ -37,7 +37,7 @@ void RobotomyRequestForm::beExecuted( void ) const
 {
 	std::cout << "Bzzzzzzzzzzzzzzzzzzzz" << std::endl;
 	if (std::rand() % 2)
-		std::cout << getName() << " has been robotomized successfully" << std::endl;
+		std::cout << _target << " has been robotomized successfully" << std::endl;
 	else
 		std::cout << "robotomy failed" << std::endl;	
 }

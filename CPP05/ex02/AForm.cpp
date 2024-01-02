@@ -36,7 +36,7 @@ AForm::~AForm() {}
 AForm const &AForm::operator =( const AForm &copy )
 {
 	this->_isSigned = copy._isSigned;
-	return *this;
+	return (*this);
 }
 
 std::string const &AForm::getName( void ) const
@@ -62,18 +62,21 @@ int const &AForm::getExecGrade( void ) const
 void AForm::beSigned(Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_signGrade)
+	{
+		this->_isSigned = false;
 		throw(AForm::GradeTooLowException());
+	}
+	else	
 		this->_isSigned = true;
 }
 
 void	AForm::execute(Bureaucrat const &executor) const
 {
-	if (!this->_isSigned)
+	if (this->_isSigned == false)
 		throw(AForm::FormNotSignedException());
-	else if (executor.getGrade() > this->_execGrade)
+	if (executor.getGrade() > this->_execGrade)
 		throw(AForm::GradeTooLowException());
-	else
-		this->beExecuted();
+	this->beExecuted();
 }
 
 char const	*AForm::GradeTooHighException::what(void) const throw()

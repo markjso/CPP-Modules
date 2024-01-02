@@ -18,7 +18,7 @@
 int main(void)
 {
 	Bureaucrat alex("Alex", 3);
-	Bureaucrat lou("Lou", 24);
+	Bureaucrat lou("Lou", 26);
 	ShrubberyCreationForm shrubbery("Hydrangea");
 	RobotomyRequestForm robotomy("C3PO");
 	PresidentialPardonForm president("Nixon");
