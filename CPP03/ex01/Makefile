@@ -18,7 +18,7 @@ SRCS = ClapTrap.cpp \
 
 OBJS=$(SRCS:.cpp=.o)
 
-CC = g++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -I -std=c++98
 

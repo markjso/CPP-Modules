@@ -3,30 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmarks <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/07 16:31:15 by jmarks            #+#    #+#              #
-#    Updated: 2023/03/08 15:51:59 by jmarks           ###   ########.fr        #
+#    Created: 2023/12/18 13:26:07 by jmarks            #+#    #+#              #
+#    Updated: 2023/12/27 17:13:28 by jmarks           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = sed
+NAME = convert
 
-SRCS = main.cpp
+SRCS = Scalar.cpp \
+		main.cpp
 
 OBJS=$(SRCS:.cpp=.o)
 
 CC=c++
 
-CFLAGS=-Wall -Wextra -Werror -std=c++98
+CFLAGS=-Wall -Wextra -Werror -I -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CLFAGS) -o $(NAME) $(OBJS) 
 	
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
@@ -38,3 +39,4 @@ fclean:	clean
 re:	fclean all
 
 .PHONY:	all	clean fclean re
+
