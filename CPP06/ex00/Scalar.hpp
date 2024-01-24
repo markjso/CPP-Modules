@@ -42,4 +42,8 @@ public:
 	};
 };
 
+// std::string checkChar(char *arg);
+// float convertToFloat(std::string input);
+// char convertToChar(std::string input);
+
 #endif
