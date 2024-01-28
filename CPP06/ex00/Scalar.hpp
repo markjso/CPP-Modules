@@ -3,23 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   Scalar.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 13:20:06 by jmarks            #+#    #+#             */
-/*   Updated: 2024/01/02 13:20:08 by jmarks           ###   ########.fr       */
+/*   Updated: 2024/01/28 21:00:00 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALAR_HPP
 # define SCALAR_HPP
 
-# include <iostream>
-# include <sstream>
-# include <iomanip>
-# include <math.h>
-# include <string>
-# include <limits>
-# include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <climits>
+#include <cmath>
+#include <iomanip>
+#include <algorithm>
 
 class ScalarConverter {
 protected:
