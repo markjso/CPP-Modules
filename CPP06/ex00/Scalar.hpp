@@ -23,7 +23,7 @@
 #include <cmath>
 
 class ScalarConverter {
-protected:
+private:
 	ScalarConverter ( void );
 public:
 	ScalarConverter( const ScalarConverter& copy);

@@ -24,7 +24,7 @@ struct	Data {
 };
 
 class Serializer {
-protected:
+private:
 	Serializer ( void );
 public:
 	Serializer( const Serializer& copy);
