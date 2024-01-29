@@ -16,6 +16,7 @@ For example:
 void some_function(int x){...}
 int* ptr = new int[10];
 uintptr_t addr = reinterpret_cast<uintptr_t>(ptr);
+some_funtion(addr);ret_cast<uintptr_t>(ptr);
 some_funtion(addr);
 
 In this example, ptr is a pointer to an int array, and addr is a variable of type uintptr_t that stores the memory address of ptr. The reinterpret_cast is used to convert the pointer to int array to uintptr_t type.
