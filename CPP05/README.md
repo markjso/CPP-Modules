@@ -25,6 +25,7 @@ A try block is used to enclose a sectio of code that may throw an exception. if 
 A catch block is used to handle exception that was thrown within a try block. It takes an argument, which is the type of exception that it can handle, and it is executed when the exception is thrown.
 
 <h3>Throw block</h3>
+
 The Throw statement is used to throw an exception. It is typically used within a fucntion to indicate that an error can occur. When a throw statement is executed, the program will jump immediately out of the current function and look for a catch block that can handle the exception.
 
 When an exception is thrown the program immediately exits the current function and unwinds the call stack until it finds a catch block that can handle the exception. If the program does not find any catch block that can handle the exception, it will call the std::terminate() function which will immediately terminate the program and will lead to an abnormal program termination.
