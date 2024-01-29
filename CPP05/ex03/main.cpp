@@ -15,12 +15,12 @@
 #include "Bureaucrat.hpp"
 
 void    a(void) {
-    system("leaks intern");
+	system("leaks intern");
 }
 
 int main(void)
 {
-//    atexit(a);
+	// atexit(a);
 
 	Intern	random;
 	Bureaucrat	ben("Ben", 42);

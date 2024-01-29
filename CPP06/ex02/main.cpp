@@ -12,8 +12,13 @@
 
 #include "Base.hpp"
 
+void    a(void) {
+	system("leaks base");
+}
+
 int	main(void)
 {
+	// atexit(a);
 	srand(time(NULL));
 	for (int j = 0; j < 5; j++)
 	{

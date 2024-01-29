@@ -21,8 +21,6 @@
 #include <fstream>
 #include <climits>
 #include <cmath>
-#include <iomanip>
-#include <algorithm>
 
 class ScalarConverter {
 protected:
@@ -32,21 +30,6 @@ public:
 	~ScalarConverter (void );
 	ScalarConverter const &operator=(ScalarConverter const & copy);
 	static void convert(const std::string &input);
-	class NonDisplayableException : public std::exception
-	{
-	public:
-		const char* what(void) const throw();
-	};
-
-	class NonConvertibleException : public std::exception
-	{
-	public:
-		const char* what(void) const throw();
-	};
 };
-
-// std::string checkChar(char *arg);
-// float convertToFloat(std::string input);
-// char convertToChar(std::string input);
 
 #endif
