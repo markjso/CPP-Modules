@@ -15,7 +15,7 @@ const char* what() const noexcept { return message_.c_str(); }
 
     In the example code we provided, the what() function is overriden in the MyException class to return a string that describes the error that occured. The const char* return type is used because it is required by the base class, and the noexcept specifier is included to indicate that the function does not throw any exceptions.
 
-<hx>ex01</h3>
+<h3>ex01</h3>
 <h3>Try block</h3>
 
 A try block is used to enclose a sectio of code that may throw an exception. if an exception is thrown within the try block, the program will immediately jump to the corresponding catch block that can handle that type of exception.
