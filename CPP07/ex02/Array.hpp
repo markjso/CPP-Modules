@@ -19,8 +19,9 @@ template <typename T>
 class Array
 {
 	private:
-    T			*_array;
-    unsigned int _length;
+	T			*_array;
+	unsigned int _length;
+	void    copyArray(T *src);
 
 	public:
 	Array(void);
@@ -29,6 +30,7 @@ class Array
 	Array(const Array & copy);
 	Array<T> &operator=(const Array & copy);
 	T &operator[](unsigned int index);
+	void printValues() const;
 	unsigned int size(void);
 	class OutOfBounds: public std::exception 
 	{
