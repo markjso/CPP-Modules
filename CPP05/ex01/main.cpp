@@ -14,19 +14,7 @@
 
 int main(void)
 {
-	{
-		try
-		{
-			Form form1("F42", 0, 5);
-			std::cout << form1 << std::endl;
-		}
-		catch (const std::exception &e)
-		{
-			std::cout << "Form F42 sign grade is 0, execute grade is 5" << std::endl;
-			std::cerr << e.what() << std::endl;
-		}
-	}
-
+	std::cout << std::endl;
 	{	
 		try 
 		{
@@ -34,6 +22,7 @@ int main(void)
 			Form form("A13", 48, 96);
 			std::cout << lou << std::endl;
 			std::cout << form << std::endl;
+			std::cout << "--------------Check if the grade is high enough to sign form-------------" << '\n';
 			lou.signForm(form);
 			std::cout << form << std::endl;
 		}
@@ -42,7 +31,7 @@ int main(void)
 			std::cerr << e.what() << std::endl;
 		}
 	}
-
+	std::cout << std::endl;
 	{	
 		try 
 		{
@@ -50,6 +39,7 @@ int main(void)
 			Form form2("B23", 48, 96);
 			std::cout << ben << std::endl;
 			std::cout << form2 << std::endl;
+			std::cout << "--------------Check if the grade is high enough to sign form-------------" << '\n';
 			ben.signForm(form2);
 			std::cout << form2 << std::endl;
 		}
@@ -58,5 +48,6 @@ int main(void)
 			std::cerr << e.what() << std::endl;
 		}
 	}
+	std::cout << std::endl;
 	return (0);
 }

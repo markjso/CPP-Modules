@@ -31,7 +31,10 @@ AForm::AForm( AForm const &copy ) : _name(copy._name), _isSigned(copy._isSigned)
 	*this = copy;
 }
 
-AForm::~AForm() {}
+AForm::~AForm() 
+{
+	std::cout << this->_name << " form has been shredded!" << std::endl;
+}
 
 AForm const &AForm::operator =( const AForm &copy )
 {

@@ -14,6 +14,7 @@
 
 int main(void)
 {
+	std::cout << std::endl;
 	{
 		try
 		{
@@ -39,8 +40,8 @@ int main(void)
 			std::cerr << e.what() << std::endl;
 		}
 	}
-
-	{	
+	std::cout << "--------------------test increment grade-----------------------" << '\n';
+	{
 		try 
 		{
 			Bureaucrat lou("Lou", 3);
@@ -57,7 +58,7 @@ int main(void)
 			std::cerr << e.what() << std::endl;
 		}
 	}
-
+	std::cout << "--------------------test decrement grade-----------------------" << '\n';
 	{	
 		try 
 		{

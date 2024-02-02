@@ -35,24 +35,26 @@ int main(void)
 	delete form;
 	form = random.makeForm("AAA", "John");
 	delete form;
-
-	std::cout << "------------------------------------" << std::endl;
-
+	std::cout << std::endl;
 	std::cout << ben << std::endl;
+	std::cout << "------------------Test Shrubbery Creation Form-------------------" << '\n';
 	form = random.makeForm("SCF", "Rose");
 	std::cout << *form << std::endl;
 	ben.signForm(*form);
 	ben.executeForm(*form);
 	delete form;
+	std::cout << "------------------Test Robotomy Request Form---------------------" << '\n';
 	form = random.makeForm("RRF", "Bender");
 	std::cout << *form << std::endl;
 	ben.signForm(*form);
 	ben.executeForm(*form);
 	delete form;
+	std::cout << "------------------Test Presidential Pardon Form------------------" << '\n';
 	form = random.makeForm("PPF", "Bill");
 	std::cout << *form << std::endl;
 	ben.signForm(*form);
 	ben.executeForm(*form);
 	delete form;
+	std::cout << std::endl;
 	return (0);
 }
