@@ -143,6 +143,9 @@ static bool isInt(const std::string& input)
 {
 	 if (input.find('.') != std::string::npos) 
 		return false;
+	if (input == "-inf" || input == "+inf" || input == "nan" || 
+		input == "-inff" || input == "+inff" || input == "nanf")
+		return false;
 	else 
 		return true;
 }
@@ -150,6 +153,9 @@ static bool isInt(const std::string& input)
 static bool isFloat(const std::string& input) 
 {
 	if (input.find('.') != std::string::npos && input.find('f') != std::string::npos)
+		return true;
+	if (input == "-inf" || input == "+inf" || input == "nan" 
+		|| input == "-inff" || input == "+inff" || input == "nanf")
 		return true;
 	else 
 		return false;

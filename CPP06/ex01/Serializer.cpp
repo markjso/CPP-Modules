@@ -16,7 +16,14 @@ Serializer::Serializer(void) {}
 
 Serializer::Serializer( Serializer const &copy)
 {
-	(void)copy;
+	*this = copy;
+}
+
+Serializer &Serializer::operator=(Serializer const & copy)
+{
+	if (this == &copy)
+		return *this;
+	return *this;
 }
 
 Serializer::~Serializer() {}

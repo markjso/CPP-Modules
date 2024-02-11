@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 13:20:37 by jmarks            #+#    #+#             */
-/*   Updated: 2024/01/03 13:20:39 by jmarks           ###   ########.fr       */
+/*   Created: 2024/02/05 11:46:21 by jmarks            #+#    #+#             */
+/*   Updated: 2024/02/05 11:46:23 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-# define SERIALIZER_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 # include <iostream>
-# include <stdint.h>
+# include <algorithm>
+# include <vector>
 
-struct	Data {
-	int	nbr;
-	std::string str;
-	char	c;
-	bool	b;
+template <typename T> 
+void easyfind(T a, int b);
+
+class noOccurrence: public std::exception 
+{
+	public:
+		const char* what(void) const throw();
 };
 
-class Serializer {
-private:
-	Serializer ( void );
-	Serializer( const Serializer& copy);
-	~Serializer (void );
-	Serializer &operator=(Serializer const & copy);
-public:
-	static uintptr_t serialize(Data* ptr);
-	static Data* deserialize(uintptr_t raw);
-};
+# include "easyfind.tpp"
 
 #endif

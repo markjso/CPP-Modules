@@ -30,7 +30,7 @@ int main(void)
 	std::cout << "Serializing Data" << std::endl;
 	std::cout << "--------------------------------" << std::endl;
 	uintptr_t	ptr = Serializer::serialize(&data);
-	std::cout << "Serialized uinptr: " << ptr << std::endl;
+	std::cout << "Serialized uinptr address in decimal: " << ptr << std::endl;
 	std::cout << std::endl;
 	std::cout << "Deserialized Data" << std::endl;
 	std::cout << "--------------------------------" << std::endl;

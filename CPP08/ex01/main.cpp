@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 13:20:37 by jmarks            #+#    #+#             */
-/*   Updated: 2024/01/03 13:20:39 by jmarks           ###   ########.fr       */
+/*   Created: 2024/02/05 11:46:59 by jmarks            #+#    #+#             */
+/*   Updated: 2024/02/05 11:47:00 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-# define SERIALIZER_HPP
+#include "Span.hpp"
 
-# include <iostream>
-# include <stdint.h>
+int main()
+{
+	Span sp = Span(5);
 
-struct	Data {
-	int	nbr;
-	std::string str;
-	char	c;
-	bool	b;
-};
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
 
-class Serializer {
-private:
-	Serializer ( void );
-	Serializer( const Serializer& copy);
-	~Serializer (void );
-	Serializer &operator=(Serializer const & copy);
-public:
-	static uintptr_t serialize(Data* ptr);
-	static Data* deserialize(uintptr_t raw);
-};
+	return (0);
+}
 
-#endif

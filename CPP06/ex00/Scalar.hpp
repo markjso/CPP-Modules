@@ -25,10 +25,10 @@
 class ScalarConverter {
 private:
 	ScalarConverter ( void );
-public:
 	ScalarConverter( const ScalarConverter& copy);
-	~ScalarConverter (void );
 	ScalarConverter const &operator=(ScalarConverter const & copy);
+public:
+	~ScalarConverter (void );
 	static void convert(const std::string &input);
 };
 

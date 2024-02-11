@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 14:53:38 by jmarks            #+#    #+#             */
-/*   Updated: 2024/01/30 14:53:42 by jmarks           ###   ########.fr       */
+/*   Created: 2024/02/05 11:46:33 by jmarks            #+#    #+#             */
+/*   Updated: 2024/02/05 11:46:35 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#include "easyfind.hpp"
 
-# include <iostream>
-
-template <typename T> void swap(T& a, T& b)
+int main()
 {
-	T tmp = a;
-	a = b;
-	b = tmp;
+	std::vector<int> numbers;
+	numbers.push_back(1);
+	numbers.push_back(3);
+	numbers.push_back(5);
+	numbers.push_back(7);
+	numbers.push_back(11);
+	numbers.push_back(13);
+	try
+	{
+		easyfind(numbers, 3);
+		easyfind(numbers, 23);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	return (0);
 }
-
-template <typename T> T& min(T& a, T& b)
-{
-	if (a <= b)
-		return (a);
-	else
-		return (b);
-}
-template <typename T> T& max(T& a, T& b)
-{
-	if (a >= b)
-		return (a);
-	else
-		return (b);
-}
-
-#endif

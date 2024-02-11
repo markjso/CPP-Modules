@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 13:20:37 by jmarks            #+#    #+#             */
-/*   Updated: 2024/01/03 13:20:39 by jmarks           ###   ########.fr       */
+/*   Created: 2024/02/05 12:40:30 by jmarks            #+#    #+#             */
+/*   Updated: 2024/02/05 13:52:20 by jmarks          ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZER_HPP
-# define SERIALIZER_HPP
+#ifndef EASYFIND_TPP
+# define EASYFIND_TPP
 
-# include <iostream>
-# include <stdint.h>
+# include "easyfind.hpp"
 
-struct	Data {
-	int	nbr;
-	std::string str;
-	char	c;
-	bool	b;
-};
+template<typename T>
+void  easyfind(T a, int b)
+{
+	typename T::iterator it = std::find(a.begin(), a.end(), b);
+	if (it == a.end())
+	{
+		throw noOccurrence();
+		return ;
+	}
+	std::cout << "Number " << b << " found in array" << std::endl;
+}
 
-class Serializer {
-private:
-	Serializer ( void );
-	Serializer( const Serializer& copy);
-	~Serializer (void );
-	Serializer &operator=(Serializer const & copy);
-public:
-	static uintptr_t serialize(Data* ptr);
-	static Data* deserialize(uintptr_t raw);
-};
+char const	*noOccurrence::what(void) const throw()
+{
+	return ("Number not found in array");
+}
 
 #endif
