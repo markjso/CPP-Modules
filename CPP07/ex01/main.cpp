@@ -15,17 +15,24 @@
 int main()
 {
 	char string[] = "Hello World";
-	int array[] = {1, 2, 3, 4};
+	int array[] = {1, 2, 3, 4, 5, 6};
 
-	std::cout << "___________________________________" << std::endl;
+	std::cout << "-------Test with a string-------" << std::endl;
+	std::cout << "String is: " << string << std::endl;
+	int size = 5;
+	std::cout << "size is: " << size << std::endl;
+	std::cout << "Print string with iter: ";
+	::iter(string, size, print);
 	std::cout << std::endl;
-	std::cout << "Using a char array" << std::endl;
-	::iter(string, 5, print);
+	std::cout << "-------Test with an int array-------" << std::endl;
+	std::cout << "Int array is: ";
+	for(int i = 0; i < 6; i++)
+	std::cout << array[i];
 	std::cout << std::endl;
-	std::cout << "___________________________________" << std::endl;
-	std::cout << std::endl;
-	std::cout << "Using an int array" << std::endl;
-	::iter(array, 3, print);
+	int isize = 3;
+	std::cout << "size is: " << isize << std::endl;
+	std::cout << "Print int array with iter: ";
+	::iter(array, isize, print);
 	std::cout << std::endl;
 	return (0);
 }

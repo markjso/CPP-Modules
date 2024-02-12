@@ -15,15 +15,17 @@
 
 #include <iostream>
 
-template <typename T> void iter(T *array, int length, void(*f)(T const &))
+template <typename T> 
+void iter(T *array, unsigned int length, void(*func)(T const &))
 {
-	for (int i = 0; i < length; i++)
+	for (unsigned int i = 0; i < length; i++)
 	{
-		f(array[i]);
+		func(array[i]);
 	}
 }
 
-template <typename T> void print(T const &x)
+template <typename T> 
+void print(T const &x)
 {
 	std::cout << x;
 }

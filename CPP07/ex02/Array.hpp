@@ -20,8 +20,7 @@ class Array
 {
 	private:
 	T			*_array;
-	unsigned int _length;
-	void    copyArray(T *src);
+	unsigned int _n;
 
 	public:
 	Array(void);

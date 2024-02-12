@@ -16,43 +16,50 @@
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array(void) : _array(nullptr), _length(0) {}
+Array<T>::Array(void) : _array(nullptr), _n(0) {}
 
 template <typename T>
 Array<T>::Array(unsigned int n)
 {
-	_array = new T[n];
-	_length = n;
+	this->_array = new T[n];
+	this->_n = n;
 }
 
 template <typename T>
 Array<T>::~Array()
 {
-	delete[] _array;
+	if (this->_array != NULL)
+		delete[] this->_array;
 	std::cout << "array successfully deleted" << std::endl;
 }
 
 template <typename T>
 Array<T>::Array(const Array & copy)
 {
-	_length = copy._length;
-	_array = new T[copy._length];
-	this->copyArray(copy._array);
+	this->_n = copy._n;
+	this->_array = new T[copy._n];
+	for (unsigned int i = 0; i < copy._n; i++)
+	{
+		this->_array[i] = copy._array[i];
+	}
 }
 
 template <typename T>
 Array<T> &Array<T>::operator=(const Array & copy)
 {
-	_array = new T[copy._length];
-	_length = copy._length;
-	this->copyArray(copy._array);
+	this->_n = copy._n;
+	this->_array = new T[copy._n];
+	for (unsigned int i = 0; i < copy._n; i++)
+	{
+		this->_array[i] = copy._array[i];
+	}
 	return (*this);
 }
 
 template <typename T>
 T &Array<T>::operator[](unsigned int index)
 {
-	if (index <_length)
+	if (index < _n)
 		return (_array[index]);
 	throw Array::OutOfBounds();
 }
@@ -60,22 +67,13 @@ T &Array<T>::operator[](unsigned int index)
 template <typename T>
 unsigned int Array<T>::size(void)
 {
-	return _length;
-}
-
-template <typename T>
-void    Array<T>::copyArray(T *src) 
-{
-	for (unsigned int i = 0; i < _length; i++)
-	{
-		_array[i] = src[i];
-	}
+	return (_n);
 }
 
 template <typename T>
 void Array<T>::printValues() const
 {
-    for (unsigned int i = 0; i < _length; ++i)
+    for (unsigned int i = 0; i < _n; ++i)
     {
         std::cout << _array[i] << " ";
     }
