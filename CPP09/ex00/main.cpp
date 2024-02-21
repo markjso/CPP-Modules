@@ -18,13 +18,12 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    const std::string bitcoinPricesFile = "data.csv";
-    const std::string inputFilename = argv[1];
+    std::string bitcoinPricesFile = "data.csv";
+    std::string inputFilename = argv[1];
 
 	BitcoinExchange exchange;
-    std::map<time_t, double> bitcoinPrices = exchange.loadBitcoinPrices(bitcoinPricesFile);
-    exchange.calculateBitcoinValue(inputFilename, bitcoinPrices);
-
+    exchange.initialiseDb(bitcoinPricesFile);
+    exchange.inputValues(inputFilename);
 
     return 0;
 }

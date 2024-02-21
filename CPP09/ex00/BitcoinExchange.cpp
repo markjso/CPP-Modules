@@ -14,61 +14,119 @@
 
 BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) 
+{
     *this = copy;
 }
 
 BitcoinExchange::~BitcoinExchange() {}
 
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) {
-    if (this != &copy) {
-        this->bitcoinPrices = copy.bitcoinPrices;
-    }
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) 
+{
+    if (this != &copy) 
+        return *this;
     return *this;
 }
 
-std::map<time_t, double> BitcoinExchange::loadBitcoinPrices(const std::string& filename) {
-    std::ifstream file(filename);
-    std::map<time_t, double> bitcoinPrices;
-    std::string line;
-    while (std::getline(file, line)) {
-        std::istringstream iss(line);
-        std::tm date = {};
-        char separator;
-        double price;
-        if (iss >> std::get_time(&date, "%Y-%m-%d") >> separator >> price && separator == ',') {
-            time_t timestamp = std::mktime(&date);
-            bitcoinPrices[timestamp] = price;
-        }
+void BitcoinExchange::initialiseDb(std::string& filename)
+{
+    std::ifstream infile;
+    infile.open(filename, std::ifstream::in);
+    if (!infile)
+    {
+        std::cerr << "Error: can't open file" << std::endl;
     }
-    return bitcoinPrices;
+    std::string line;
+    while(std::getline(infile, line))
+    {
+        std::istringstream iss(line);
+        std::string fileDate, fileValue;
+        if (getline(iss, fileDate, ',') && getline(iss, fileValue, ','))
+        {
+            btcDb[fileDate] = fileValue;
+        }   
+    }
+    infile.close();
 }
 
-void BitcoinExchange::calculateBitcoinValue(const std::string& inputFilename, const std::map<time_t, double>& bitcoinPrices) {
-    std::ifstream file(inputFilename);
-    std::string line;
-    while (std::getline(file, line)) {
-        std::istringstream iss(line);
-        std::tm date = {};
-        double value;
-        char separator;
-        if (iss >> std::get_time(&date, "%Y-%m-%d") >> separator >> value && separator == '|' && mktime(&date) != -1) {
-           if (value <= 0 || value > 1000) {
-        std::cerr << "Value must be a positive integer or float between 0 and 1000." << std::endl;
-        continue ;
-           }
-           time_t inputDate = mktime(&date);
-            
-            std::map<time_t, double>::const_iterator it = bitcoinPrices.lower_bound(inputDate);
-            if (it != bitcoinPrices.end()) {
-                double bitcoinPrice = it->second;
-                double bitcoinValue = bitcoinPrice * value;
-                std::cout << "On " << std::put_time(&date, "%Y-%m-%d") << ", the value of " << value << " bitcoin was " << std::fixed << std::setprecision(2) << bitcoinValue << std::endl;
-            } else {
-                std::cerr << "No exchange rate found for date: " << std::put_time(&date, "%Y-%m-%d") << std::endl;
-            }
-        } else {
-            std::cerr << "Invalid input line: " << line << std::endl;
-        }
+void BitcoinExchange::inputValues(std::string& filename)
+{
+    std::ifstream infile;
+    infile.open(filename, std::ifstream::in);
+    if (!infile)
+    {
+        std::cerr << "Error: can't open file" << std::endl;
     }
+    std::string line;
+    while(std::getline(infile, line))
+    {
+        std::istringstream iss(line);
+        std::string dateString, inputStr;
+        char separator;
+        if (!(iss >> dateString >> separator >> inputStr) || separator != '|')
+        {
+            std::cout << "Error: bad input => : " << line << std::endl;
+            continue;
+        }
+        else if (!checkInputDate(dateString))
+        {
+            std::cout << "Error: bad input => : " << dateString << std::endl;
+            continue;
+        }
+        checkInputAmount(inputStr);    
+        double value = std::stod(inputStr);
+        std::map<std::string, std::string>::iterator it = btcDb.find(dateString);
+        if (it == btcDb.end()) 
+        {
+            it = btcDb.lower_bound(dateString);
+            if (it != btcDb.begin())
+            {
+                --it;
+            }
+        }
+        double bitcoinPrice = stod(it->second);
+        double bitcoinValue = bitcoinPrice * value;
+        if (bitcoinValue < 0.0 || bitcoinValue > 999.9)
+        {
+            continue;
+        }
+        std::cout << dateString << " => " << value << " => " << bitcoinValue << std::setprecision(2) << std::endl;
+    }
+    infile.close();
+}
+
+void BitcoinExchange::checkInputAmount(std::string inputValue) 
+{
+    bool noError = true;
+    if (inputValue.length() == 0)
+    {
+        noError = false;
+    }
+    if (noError)
+    {
+        double value = std::stod(inputValue);
+        if (value < 0)
+            std::cout << "Error: not a positive number." << std::endl;
+        if (value > 1000)
+            std::cout << "Error: too large a number." << std::endl;	
+    }	
+}
+
+static bool valid_date(unsigned short year,unsigned short month,unsigned short day){
+    unsigned short monthlen[]={31,28,31,30,31,30,31,31,30,31,30,31};
+    if (!year || !month || !day || month>12)
+        return false;
+    if (day>monthlen[month-1])
+        return false;
+    return true;
+}
+
+bool BitcoinExchange::checkInputDate(std::string inputDate)
+{
+    // struct tm date;
+    // char *end = strptime(inputDate.c_str(), "%Y-%m-%d", &date);
+    if (!valid_date(inputDate))
+        return false;
+    else
+        return true;
 }

@@ -21,20 +21,20 @@
 #include <ctime>
 #include <cmath>
 #include <iomanip>
+#include <stdexcept>
 
 class	BitcoinExchange {
 	private:
-	std::map<time_t, double> bitcoinPrices;
+	std::map<std::string, std::string> btcDb;
 	public:
 	BitcoinExchange(void);
 	BitcoinExchange(BitcoinExchange const & copy);
 	~BitcoinExchange(void);
 	BitcoinExchange &operator=(BitcoinExchange const & copy);
-	std::tm getDate(const std::string& line) const;
-	double getValue(const std::string& line) const;
-	std::map<time_t, double> loadBitcoinPrices(std::string const &filename);
-	void calculateBitcoinValue(const std::string& inputFilename, const std::map<time_t, double>& bitcoinPrices);
-	void printBitcoinPrices() const;
+	void initialiseDb(std::string& filename);
+	void inputValues(std::string& filename);
+	void checkInputAmount(std::string inputValue);
+	bool checkInputDate(std::string inputDate);
 };
 
 #endif
