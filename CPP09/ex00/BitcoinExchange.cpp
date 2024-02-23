@@ -37,6 +37,7 @@ void BitcoinExchange::initialiseDb(std::string& filename)
         std::cerr << "Error: can't open file" << std::endl;
     }
     std::string line;
+    void (std::getline(infile, line));
     while(std::getline(infile, line))
     {
         std::istringstream iss(line);
@@ -58,6 +59,7 @@ void BitcoinExchange::inputValues(std::string& filename)
         std::cerr << "Error: can't open file" << std::endl;
     }
     std::string line;
+    void (std::getline(infile, line));
     while(std::getline(infile, line))
     {
         std::istringstream iss(line);
@@ -68,13 +70,17 @@ void BitcoinExchange::inputValues(std::string& filename)
             std::cout << "Error: bad input => : " << line << std::endl;
             continue;
         }
-        else if (!checkInputDate(dateString))
+        if (!checkInputDate(dateString))
         {
             std::cout << "Error: bad input => : " << dateString << std::endl;
             continue;
         }
-        checkInputAmount(inputStr);    
-        double value = std::stod(inputStr);
+        else if (!checkInputAmount(inputStr))
+        {
+            std::cout << "Error: not a number => : " << inputStr << std::endl;
+            continue;
+        }    
+        float value = std::stod(inputStr);
         std::map<std::string, std::string>::iterator it = btcDb.find(dateString);
         if (it == btcDb.end()) 
         {
@@ -84,8 +90,8 @@ void BitcoinExchange::inputValues(std::string& filename)
                 --it;
             }
         }
-        double bitcoinPrice = stod(it->second);
-        double bitcoinValue = bitcoinPrice * value;
+        float bitcoinPrice = stod(it->second);
+        float bitcoinValue = bitcoinPrice * value;
         if (bitcoinValue < 0.0 || bitcoinValue > 999.9)
         {
             continue;
@@ -95,7 +101,7 @@ void BitcoinExchange::inputValues(std::string& filename)
     infile.close();
 }
 
-void BitcoinExchange::checkInputAmount(std::string inputValue) 
+bool BitcoinExchange::checkInputAmount(std::string inputValue) 
 {
     bool noError = true;
     if (inputValue.length() == 0)
@@ -104,28 +110,46 @@ void BitcoinExchange::checkInputAmount(std::string inputValue)
     }
     if (noError)
     {
-        double value = std::stod(inputValue);
+        float value = std::stod(inputValue);
+        for (size_t i = 0; i < inputValue.length(); i++)
+        {
+            if (!isdigit(inputValue[i]) && inputValue[i] != '.' && inputValue[i] != '-')
+            return false;
+        }
         if (value < 0)
             std::cout << "Error: not a positive number." << std::endl;
         if (value > 1000)
             std::cout << "Error: too large a number." << std::endl;	
-    }	
+    }
+    return true;	
 }
 
-static bool valid_date(unsigned short year,unsigned short month,unsigned short day){
-    unsigned short monthlen[]={31,28,31,30,31,30,31,31,30,31,30,31};
-    if (!year || !month || !day || month>12)
-        return false;
-    if (day>monthlen[month-1])
-        return false;
-    return true;
+static bool extractDate(const std::string& s, int& y, int& m, int& d)
+{
+    std::istringstream is(s);
+    char delimiter;
+    if (is >> y >> delimiter >> m >> delimiter >> d) 
+    {
+        struct tm date;
+        std::memset(&date, 0, sizeof(date));
+        date.tm_mday = d;
+        date.tm_mon = m - 1;
+        date.tm_year = y - 1900;
+        date.tm_isdst = -1;
+
+        time_t when = mktime(&date);
+        const struct tm *norm = localtime(&when);
+        return (norm->tm_year == y - 1900 &&
+                norm->tm_mday == d &&
+                norm->tm_mon  == m - 1);
+    }
+    return false;
 }
 
 bool BitcoinExchange::checkInputDate(std::string inputDate)
 {
-    // struct tm date;
-    // char *end = strptime(inputDate.c_str(), "%Y-%m-%d", &date);
-    if (!valid_date(inputDate))
+    int d, m, y;
+    if (!extractDate(inputDate, y, m, d))
         return false;
     else
         return true;

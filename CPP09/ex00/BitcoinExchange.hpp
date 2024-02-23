@@ -33,7 +33,7 @@ class	BitcoinExchange {
 	BitcoinExchange &operator=(BitcoinExchange const & copy);
 	void initialiseDb(std::string& filename);
 	void inputValues(std::string& filename);
-	void checkInputAmount(std::string inputValue);
+	bool checkInputAmount(std::string inputValue);
 	bool checkInputDate(std::string inputDate);
 };
 
