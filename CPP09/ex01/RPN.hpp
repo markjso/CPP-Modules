@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 13:10:06 by jmarks            #+#    #+#             */
-/*   Updated: 2024/02/07 13:10:08 by jmarks           ###   ########.fr       */
+/*   Created: 2024/02/26 15:00:33 by jmarks            #+#    #+#             */
+/*   Updated: 2024/02/26 15:00:35 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,21 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <map>
+#include <stack>
 #include <ctime>
 #include <cmath>
 #include <iomanip>
 #include <stdexcept>
 
-class	BitcoinExchange {
+class	RPN {
 	private:
-	std::map<std::string, std::string> btcDb;
+	std::stack<int> st;
 	public:
-	BitcoinExchange(void);
-	BitcoinExchange(BitcoinExchange const & copy);
-	~BitcoinExchange(void);
-	BitcoinExchange &operator=(BitcoinExchange const & copy);
-	void initialiseDb(std::string& filename);
-	void inputValues(std::string& filename);
-	bool checkInputAmount(std::string inputValue);
-	bool checkInputDate(std::string inputDate);
+	RPN(void);
+	RPN(RPN const & copy);
+	~RPN(void);
+	RPN &operator=(RPN const & copy);
+	void RPNcalculator(std::string input);
+	
 };
+
