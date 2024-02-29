@@ -16,20 +16,21 @@
 # include "easyfind.hpp"
 
 template<typename T>
-void  easyfind(T a, int b)
+typename T::iterator easyfind(T &container, int value)
 {
-	typename T::iterator it = std::find(a.begin(), a.end(), b);
-	if (it == a.end())
+	typename T::iterator it = std::find(container.begin(), container.end(), value);
+	if (it != container.end())
 	{
-		throw noOccurrence();
-		return ;
+		std::cout << "Found " << value << std::endl;
+		return (it);
 	}
-	std::cout << "Number " << b << " found in array" << std::endl;
+	else
+		throw noOccurrence();
 }
 
 char const	*noOccurrence::what(void) const throw()
 {
-	return ("Number not found in array");
+	return ("Value not found in array");
 }
 
 #endif

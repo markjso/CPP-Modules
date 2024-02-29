@@ -21,12 +21,25 @@ template<typename T>
 class MutantStack : public std::stack<T>
 {
 	public:
-		MutantStack() : std::stack<T>() {}
-		MutantStack(MutantStack const & copy) : std::stack<T>(copy) {}
+		MutantStack() {}
+		MutantStack(MutantStack<T> const & copy)
+		{
+			*this = copy;
+		}
+
+		MutantStack<T> &operator=(MutantStack<T> const & copy)
+		{
+			if (this != &copy)
+				this->c = copy.c;
+			return *this;
+		}
+
 		~MutantStack() {}
 
-		typedef typename std::deque<T>::iterator iterator;
-		iterator begin() 
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+
+		iterator begin()
 		{
 			return (this->c.begin());
 		}
@@ -34,6 +47,16 @@ class MutantStack : public std::stack<T>
 		iterator end() 
 		{
 			return (this->c.end());
+		}
+
+		reverse_iterator rbegin()
+		{
+			return (this->c.rbegin());
+		}
+
+		reverse_iterator rend()
+		{
+			return (this->c.rend());
 		}
 };
 

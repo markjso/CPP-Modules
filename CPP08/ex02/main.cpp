@@ -62,9 +62,16 @@ while (itl != itle)
 	std::cout << "\e[0;32m" << *itl << "\e[0m" << std::endl;
 	++itl;
 }
+std::cout << "--------------Test reverse iterators ------------------" << '\n';
+MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+std::cout << "First element of reverse: " << *rit << std::endl;
+MutantStack<int>::reverse_iterator rite = mstack.rend();
+rite--;
+std::cout << "Last element of reverse: " << *rite << std::endl;
 std::cout << "--------------Create stack using copy constructor------" << '\n';
 std::stack<int> s(mstack);
 std::cout << "--------------Print size of copy stack ----------------" << '\n';
 std::cout << s.size() << std::endl;
+
 return 0;
 }

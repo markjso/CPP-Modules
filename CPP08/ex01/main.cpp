@@ -22,8 +22,27 @@ int main()
 	sp.addNumber(9);
 	sp.addNumber(11);
 	
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
+	std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+	std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+
+	Span sp1(100001);
+
+	try
+	{
+		std::vector<int> numToAdd;
+		for (int i = 0; i < 10000; ++i)
+		{
+			numToAdd.push_back(i);
+		}
+		sp1.addRange(numToAdd.begin(), numToAdd.end());
+		std::cout << "Successfully added 10000 numbers to Span" <<std::endl;
+		std::cout << "Shortest span: " << sp1.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << sp1.longestSpan() << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << "Failed: " << e.what() <<std::endl;
+	}
 
 	return (0);
 }

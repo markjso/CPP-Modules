@@ -19,23 +19,35 @@
 
 class	Span {
 	private:
-		unsigned int _N;
-		std::vector<int> _numbers;
+		unsigned int maxSize;
+		std::vector<int> numbers;
 
 	public:
+		Span();
 		Span(unsigned int N);
 		Span(const Span &copy);
 		Span &operator = (const Span &copy);
 		~Span();
 		void addNumber(int N);
-		int shortestSpan();
-		int longestSpan();
-		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		unsigned int shortestSpan();
+		unsigned int longestSpan();
+		template<typename T>
+		void addRange(T first, T last)
+		{
+			unsigned int remain = maxSize - numbers.size();
+			unsigned int input = std::distance(first, last);
+			if (input > remain)
+			{
+				throw std::runtime_error("Not enough space to add all numbers");
+			}
+			numbers.insert(numbers.end(), first, last);
+		}
+
 		class noSpan: public std::exception 
-	{
-		public:
-			const char* what(void) const throw();
-	};
+		{
+			public:
+				const char* what(void) const throw();
+		};
 };
 
 #endif

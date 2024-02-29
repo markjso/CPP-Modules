@@ -18,7 +18,7 @@
 # include <vector>
 
 template <typename T> 
-void easyfind(T a, int b);
+typename T::iterator easyfind(T &container, int value);
 
 class noOccurrence: public std::exception 
 {
