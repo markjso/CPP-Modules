@@ -28,97 +28,99 @@ RPN &RPN::operator=(const RPN &copy)
     return *this;
 }
 
-// static bool isOperator(char ch)
-// {
-//     if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
-// 		return true;
-// 	else
-// 		return false;
-// }
+static bool isOperator(char ch) 
+{
+    if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
+		return (true);
+	else
+		return (false);
+}
 
 void RPN::RPNcalculator(std::string input)
 {
-	std::stack<int> st;
-	for (size_t i = 0; i < input.length(); i++)
+	int result;
+	for (size_t i = 0; i < input.size(); i++)
 	{
-		char ch = input[i];
-		while (st.size() >= 3)
-		{
-		int number2 = st.top();
-		st.pop();
-		int number1 = st.top();
-		st.pop();
-		char op = st.top();
-		st.pop();
-		switch (op)
-		{
-			case ' ':
-			break;
-			case '+':
+		if (!isdigit(input[i]) && !isOperator(input[i]) && input[i] != ' ')
 			{
-				if (st.size() < 2)
+				std::cout << "Error invalid character " << input[i] << std::endl;
+				return ;
+			}
+		else if (std::isdigit(input[i]))
+			st.push(input[i] - '0');
+		else if (input[i] == ' ')
+			continue ;
+		else
+		{
+			switch (input[i])
+			{
+				case '+':
 				{
-					std::cerr << "Error: Not enough operands to calculate function" << std::endl;
-					return ;
+					if (st.size() < 2)
+					{
+						std::cerr << "Error not enough operators" << std::endl;
+						return ;
+					}
+					int number2 = st.top(); st.pop();
+					int number1 = st.top(); st.pop();
+					result = number1 + number2;
+					break;
 				}
-				st.push(number1 + number2);
+				case '-':
+				{
+					if (st.size() < 2)
+					{
+						std::cerr << "Error not enough operators" << std::endl;
+						return ;
+					}
+					int number2 = st.top(); st.pop();
+					int number1 = st.top(); st.pop();
+					result = number1 - number2;
+					break;
+				}
+				case '*':
+				{
+					if (st.size() < 2)
+					{
+						std::cerr << "Error not enough operators" << std::endl;
+						return ;
+					}
+					int number2 = st.top(); st.pop();
+					int number1 = st.top(); st.pop();
+					result = number1 * number2;
+					break;
+				}
+				case '/':
+				{
+					if (st.size() < 2)
+					{
+						std::cerr << "Error not enough operators" << std::endl;
+						return ;
+					}
+					int number2 = st.top(); st.pop();
+					int number1 = st.top(); st.pop();
+					if (number2 != 0)
+					result = number1 / number2;
+					else
+					{
+						std::cerr << "Error: can't divide by zero" << std::endl;
+						return ;
+					}
+					break;
+				}
+				default:
+				if (st.size() < 2)
+				std::cerr << "Error not enough operators" << std::endl;	
 				break;
 			}
-			case '-':
-			{
-				if (st.size() < 2)
-				{
-					std::cerr << "Error: Not enough operands to calculate function" << std::endl;
-					return ;
-				}
-			st.push(number1 - number2);
-			break;
-			}
-			case '*':
-			{
-				if (st.size() < 2)
-				{
-					std::cerr << "Error: Not enough operands to calculate function" << std::endl;
-					return ;
-				}
-			st.push(number1 * number2);
-			break;
-			}
-			case '/':
-			{
-				if (st.size() < 2)
-				{
-					std::cerr << "Error: Not enough operands to calculate function" << std::endl;
-					return ;
-				}
-				if (number2 != 0)
-				st.push(number1 / number2);
-				else
-				{
-					std::cerr << "Error: can't divide by zero" << std::endl;
-					return ;
-				}
-			break;
-			}
-			default:
-			{
-				if (ch < '0' || ch > '9')
-				{
-					std::cerr << "Invalid character " << ch << std::endl;
-					return ;
-				}
-				st.push(ch - '0');
-				break;
-			}
-		}
+		st.push(result);
 		}
 	}
 	if (st.size() != 1)
 	{
-		std::cerr << "Error: " << std::endl;
+		std::cerr << "Error" << std::endl;
 		return ;
 	}
-	int result = st.top();
 	std::cout << result << std::endl;
 }
 
