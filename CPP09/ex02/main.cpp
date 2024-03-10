@@ -12,11 +12,7 @@
 
 #include "PmergeMe.hpp"
 
-int main(int argc, char **argv)
-{
-    std::deque<int> d_arr;
-    std::vector<int> v_arr;
-
+int main(int argc, char** argv) {
     if (argc < 2)
     {
         std::cerr << "Error: No sequence provided." << std::endl;
