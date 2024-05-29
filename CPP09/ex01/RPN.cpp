@@ -47,7 +47,7 @@ void RPN::RPNcalculator(std::string input)
 				return ;
 			}
 		else if (std::isdigit(input[i]))
-			st.push(input[i] - '0');
+			stk.push(input[i] - '0');
 		else if (input[i] == ' ')
 			continue ;
 		else
@@ -56,49 +56,49 @@ void RPN::RPNcalculator(std::string input)
 			{
 				case '+':
 				{
-					if (st.size() < 2)
+					if (stk.size() < 2)
 					{
 						std::cerr << "Error not enough operators" << std::endl;
 						return ;
 					}
-					int number2 = st.top(); st.pop();
-					int number1 = st.top(); st.pop();
+					int number2 = stk.top(); stk.pop();
+					int number1 = stk.top(); stk.pop();
 					result = number1 + number2;
 					break;
 				}
 				case '-':
 				{
-					if (st.size() < 2)
+					if (stk.size() < 2)
 					{
 						std::cerr << "Error not enough operators" << std::endl;
 						return ;
 					}
-					int number2 = st.top(); st.pop();
-					int number1 = st.top(); st.pop();
+					int number2 = stk.top(); stk.pop();
+					int number1 = stk.top(); stk.pop();
 					result = number1 - number2;
 					break;
 				}
 				case '*':
 				{
-					if (st.size() < 2)
+					if (stk.size() < 2)
 					{
 						std::cerr << "Error not enough operators" << std::endl;
 						return ;
 					}
-					int number2 = st.top(); st.pop();
-					int number1 = st.top(); st.pop();
+					int number2 = stk.top(); stk.pop();
+					int number1 = stk.top(); stk.pop();
 					result = number1 * number2;
 					break;
 				}
 				case '/':
 				{
-					if (st.size() < 2)
+					if (stk.size() < 2)
 					{
 						std::cerr << "Error not enough operators" << std::endl;
 						return ;
 					}
-					int number2 = st.top(); st.pop();
-					int number1 = st.top(); st.pop();
+					int number2 = stk.top(); stk.pop();
+					int number1 = stk.top(); stk.pop();
 					if (number2 != 0)
 					result = number1 / number2;
 					else
@@ -109,14 +109,14 @@ void RPN::RPNcalculator(std::string input)
 					break;
 				}
 				default:
-				if (st.size() < 2)
+				if (stk.size() < 2)
 				std::cerr << "Error not enough operators" << std::endl;	
 				break;
 			}
-		st.push(result);
+		stk.push(result);
 		}
 	}
-	if (st.size() != 1)
+	if (stk.size() != 1)
 	{
 		std::cerr << "Error" << std::endl;
 		return ;

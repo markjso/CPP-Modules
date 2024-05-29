@@ -184,7 +184,7 @@ void PmergeMe::mergeSortInsertDeque(std::deque<int>& deq)
     std::deque<int> left;
     std::deque<int> right;
     std::deque<int>::iterator middle = deq.begin() + (deq.size() / 2);
-    // Split vector into two halves
+    // Split deque into two halves
     for (std::deque<int>::iterator it = deq.begin(); it != middle; ++it) 
     {
         left.push_back(*it);

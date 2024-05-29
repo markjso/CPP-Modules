@@ -18,7 +18,7 @@
 
 class	RPN {
 	private:
-	std::stack<int> st;
+	std::stack<int> stk;
 	public:
 	RPN(void);
 	RPN(RPN const & copy);

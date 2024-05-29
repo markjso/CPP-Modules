@@ -33,9 +33,7 @@ void BitcoinExchange::initialiseDb(std::string& filename)
     std::ifstream infile;
     infile.open(filename, std::ifstream::in);
     if (!infile)
-    {
         std::cerr << "Error: can't open file" << std::endl;
-    }
     std::string line;
     void (std::getline(infile, line));
     while(std::getline(infile, line))
@@ -43,11 +41,14 @@ void BitcoinExchange::initialiseDb(std::string& filename)
         std::istringstream iss(line);
         std::string fileDate, fileValue;
         if (getline(iss, fileDate, ',') && getline(iss, fileValue, ','))
-        {
             btcDb[fileDate] = fileValue;
-        }   
     }
     infile.close();
+}
+
+static bool is_empty(std::ifstream& filename)
+{
+    return filename.peek() == std::ifstream::traits_type::eof();
 }
 
 void BitcoinExchange::inputValues(std::string& filename)
@@ -55,9 +56,9 @@ void BitcoinExchange::inputValues(std::string& filename)
     std::ifstream infile;
     infile.open(filename, std::ifstream::in);
     if (!infile)
-    {
         std::cerr << "Error: can't open file" << std::endl;
-    }
+    if (is_empty(infile))
+        std::cout << "File is empty, nothing to process" << std::endl;
     std::string line;
     void (std::getline(infile, line));
     while(std::getline(infile, line))
@@ -93,9 +94,7 @@ void BitcoinExchange::inputValues(std::string& filename)
         float bitcoinPrice = stod(it->second);
         float bitcoinValue = bitcoinPrice * value;
         if (bitcoinValue < 0.0 || bitcoinValue > 999.9)
-        {
             continue;
-        }
         std::cout << dateString << " => " << value << " => " << bitcoinValue << std::setprecision(2) << std::endl;
     }
     infile.close();
@@ -105,9 +104,7 @@ bool BitcoinExchange::checkInputAmount(std::string inputValue)
 {
     bool noError = true;
     if (inputValue.length() == 0)
-    {
         noError = false;
-    }
     if (noError)
     {
         float value = std::stod(inputValue);
