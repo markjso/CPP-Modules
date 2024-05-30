@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarks <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jmarks <jmarks@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 16:53:10 by jmarks            #+#    #+#             */
-/*   Updated: 2024/02/29 16:53:12 by jmarks           ###   ########.fr       */
+/*   Updated: 2024/05/30 11:27:36 by jmarks           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <climits>
 #include <algorithm>
 #include <ctime>
 #include <iomanip>
+#include <sys/time.h>
 
 class PmergeMe {
     private:
@@ -27,15 +29,16 @@ class PmergeMe {
     std::vector<int> _unsortedVector;
     std::deque<int> _unsortedDeque;
 
-    std::vector<int> mergeVector(const std::vector<int>& left, const std::vector<int>& right);
-    void mergeSortInsertVector(std::vector<int>& vec);
-    std::deque<int> mergeDeque(const std::deque<int>& left, const std::deque<int>& right);
-    void mergeSortInsertDeque(std::deque<int>& deq);
-
     public:
     PmergeMe();
     ~PmergeMe();
     void initialise(int argc, char **argv);
+    std::vector<int>   mergeInsertSortVector(std::vector<int>& vecElements);
+    std::deque<int> mergeInsertSortDeque(std::deque<int>& deqElements);
+    int	binarySearchDeque(const std::deque<int> &sorted, int element);
+    int	binarySearchVector(const std::vector<int> &sorted, int element);
+    void    insertSmallestElementsDeque(std::deque<int> &sorted, const std::deque<int> &smaller);
+    void    insertSmallestElementsVector(std::vector<int> &sorted, const std::vector<int> &smaller);
     void printBefore(std::vector<int>& arr);
     void printAfter(std::vector<int>& arr);
 };
