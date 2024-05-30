@@ -29,13 +29,10 @@ PmergeMe &PmergeMe::operator=(PmergeMe const &copy)
 
 PmergeMe::~PmergeMe() {}
 
-double getElapsedTime(struct timespec start, struct timespec end) {
-        return (end.tv_sec - start.tv_sec) * 1e9 + (end.tv_nsec - start.tv_nsec);
-    }
-
 void PmergeMe::initialise(int argc, char **argv)
 {
-    for (int i = 1; i < argc; ++i) 
+    struct timeval start, end;
+	for (int i = 1; i < argc; ++i) 
     {
         for (int j = 0; argv[i][j]; j++)
         {
@@ -49,24 +46,20 @@ void PmergeMe::initialise(int argc, char **argv)
         _unsortedDeque.push_back(atoi(argv[i]));
     }
     printBefore(_unsortedVector);
-
-    struct timespec start_time_vec, end_time_vec;
-    clock_gettime(CLOCK_MONOTONIC, &start_time_vec);
+    gettimeofday(&start, NULL);
     mergeInsertSortVector(_unsortedVector);
-    clock_gettime(CLOCK_MONOTONIC, &end_time_vec);
-    double time_vec = getElapsedTime(start_time_vec, end_time_vec) / 1000000;  // Convert to microseconds
-    printAfter(_unsortedVector);
-    std::cout << "Time to process a range of " << _unsortedVector.size() 
-              << " elements with std::vector: " << std::fixed << std::setprecision(5) 
+	gettimeofday(&end, NULL);
+    double time_vec = (end.tv_sec - start.tv_sec) + ((end.tv_usec - start.tv_usec)/1000000.0);
+    std::cout << "Time to process a range of " << _unsortedVector.size()
+              << " elements with std::vector: " << std::fixed << std::setprecision(5)
               << time_vec << " us" << std::endl;
 
-    struct timespec start_time_deq, end_time_deq;
-    clock_gettime(CLOCK_MONOTONIC, &start_time_deq);
+    gettimeofday(&start, NULL);
     mergeInsertSortDeque(_unsortedDeque);
-    clock_gettime(CLOCK_MONOTONIC, &end_time_deq);
-    double time_deq = getElapsedTime(start_time_deq, end_time_deq) / 100000;  // Convert to microseconds
-    std::cout << "Time to process a range of " << _unsortedDeque.size() 
-              << " elements with std::deque: " << std::fixed << std::setprecision(5) 
+    gettimeofday(&end, NULL);
+    double time_deq = (end.tv_sec - start.tv_sec) + ((end.tv_usec - start.tv_usec)/1000000.0);
+    std::cout << "Time to process a range of " << _unsortedDeque.size()
+              << " elements with std::deque: " << std::fixed << std::setprecision(5)
               << time_deq << " us" << std::endl;
 }
 
@@ -114,7 +107,7 @@ std::vector<int>PmergeMe::mergeInsertSortVector(std::vector<int>& vecElements)
 	if (n % 2 == 1)
 		pairs.push_back(std::make_pair(vecElements[n - 1], INT_MIN));
 
-	// recursively sort the larger elements from the pairs to create new sorted sequence
+	// recursively sort the larger elements from the pairs to create sorted sequence
 	std::vector<int>	larger;
 	std::vector<int>	sorted;
 	std::vector<int>	smaller;
@@ -129,8 +122,8 @@ std::vector<int>PmergeMe::mergeInsertSortVector(std::vector<int>& vecElements)
 	mergeInsertSortVector(sorted);
 
 	// insert the smaller elements into the sorted sequence
+	// uses the binary search to determine the correct position
 	insertSmallestElementsVector(sorted, smaller);
-
 	vecElements = sorted;
 	return (sorted);
 }
@@ -186,8 +179,7 @@ std::deque<int>PmergeMe::mergeInsertSortDeque(std::deque<int>& deqElements)
     int	n = deqElements.size();
 	if (n <= 1)
 		return (deqElements);
-	// performing n/2 comparisions to create n/2 pairs
-	// sorting the pairs by the larger element
+
 	std::deque<std::pair<int, int> > pairs;
 	for (int i = 0; i < n-1; i += 2)
 	{
@@ -199,7 +191,6 @@ std::deque<int>PmergeMe::mergeInsertSortDeque(std::deque<int>& deqElements)
 	if (n % 2 == 1)
 		pairs.push_back(std::make_pair(deqElements[n - 1], INT_MIN));
 
-	// recursively sort the larger elements from the pairs to create new sorted sequence
 	std::deque<int>	larger;
 	std::deque<int>	sorted;
 	std::deque<int>	smaller;
@@ -212,10 +203,7 @@ std::deque<int>PmergeMe::mergeInsertSortDeque(std::deque<int>& deqElements)
 	}
 	sorted = larger;
 	mergeInsertSortDeque(sorted);
-
-	// insert the smaller elements into the sorted sequence
 	insertSmallestElementsDeque(sorted, smaller);
-
 	deqElements = sorted;
 	return (sorted);
 }
