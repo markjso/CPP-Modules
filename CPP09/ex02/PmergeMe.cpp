@@ -48,6 +48,7 @@ void PmergeMe::initialise(int argc, char **argv)
     printBefore(_unsortedVector);
     gettimeofday(&start, NULL);
     mergeInsertSortVector(_unsortedVector);
+	printAfter(_unsortedVector);
 	gettimeofday(&end, NULL);
     double time_vec = (end.tv_sec - start.tv_sec) + ((end.tv_usec - start.tv_usec)/1000000.0);
     std::cout << "Time to process a range of " << _unsortedVector.size()

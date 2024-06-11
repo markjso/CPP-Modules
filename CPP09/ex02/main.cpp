@@ -21,6 +21,7 @@ int main(int argc, char** argv)
     }
     PmergeMe merge;
     merge.initialise(argc, argv);
+    PmergeMe merge1 = merge;
     
     return (0);
 }

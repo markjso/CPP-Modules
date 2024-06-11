@@ -59,11 +59,13 @@ unsigned int Span::shortestSpan()
 
 unsigned int Span::longestSpan()
 {
+	int maxDist;
 	if (numbers.size() <= 1)
 		throw noSpan();
-	std::pair<std::vector<int>::iterator, std::vector<int>::iterator> maxDist;
-	maxDist = std::minmax_element(numbers.begin(), numbers.end());
-	return (*maxDist.second - *maxDist.first);
+	std::sort(numbers.begin(), numbers.end());
+	maxDist = *(numbers.end()- 1) - *(numbers.begin());
+	numbers.clear();
+	return(maxDist);
 }
 
 char const *Span::noSpan::what(void) const throw()

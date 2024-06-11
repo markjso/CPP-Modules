@@ -42,7 +42,7 @@ newlist.push_back(5);
 mstack.push(737);
 newlist.push_back(737);
 mstack.push(0);
-newlist.push_back(0);
+newlist.push_back(0);		
 std::cout << "--------------Create iterators-------------------------" << '\n';
 MutantStack<int>::iterator it = mstack.begin();
 MutantStack<int>::iterator ite = mstack.end();

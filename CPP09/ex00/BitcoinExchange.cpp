@@ -16,16 +16,15 @@ BitcoinExchange::BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) 
 {
-    *this = copy;
+    this->btcDb = copy.btcDb;
 }
 
 BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy) 
 {
-    if (this != &copy) 
-        return *this;
-    return *this;
+    this->btcDb = copy.btcDb;
+        return (*this);
 }
 
 void BitcoinExchange::initialiseDb(std::string& filename)
@@ -58,7 +57,7 @@ void BitcoinExchange::inputValues(std::string& filename)
     if (!infile)
         std::cerr << "Error: can't open file" << std::endl;
     if (is_empty(infile))
-        std::cout << "File is empty, nothing to process" << std::endl;
+        std::cerr << "File is empty, nothing to process" << std::endl;
     std::string line;
     void (std::getline(infile, line));
     while(std::getline(infile, line))
@@ -68,20 +67,17 @@ void BitcoinExchange::inputValues(std::string& filename)
         char separator;
         if (!(iss >> dateString >> separator >> inputStr) || separator != '|')
         {
-            std::cout << "Error: bad input => : " << line << std::endl;
+            std::cerr << "Error: bad input => : " << line << std::endl;
             continue;
         }
         if (!checkInputDate(dateString))
         {
-            std::cout << "Error: bad input => : " << dateString << std::endl;
+            std::cerr << "Error: bad input => : " << dateString << std::endl;
             continue;
         }
         else if (!checkInputAmount(inputStr))
-        {
-            std::cout << "Error: not a number => : " << inputStr << std::endl;
             continue;
-        }    
-        float value = std::stod(inputStr);
+        float value = std::stof(inputStr);
         std::map<std::string, std::string>::iterator it = btcDb.find(dateString);
         if (it == btcDb.end()) 
         {
@@ -91,11 +87,9 @@ void BitcoinExchange::inputValues(std::string& filename)
                 --it;
             }
         }
-        float bitcoinPrice = stod(it->second);
+        float bitcoinPrice = stof(it->second);
         float bitcoinValue = bitcoinPrice * value;
-        if (bitcoinValue < 0.0 || bitcoinValue > 999.9)
-            continue;
-        std::cout << dateString << " => " << value << " => " << bitcoinValue << std::setprecision(2) << std::endl;
+        std::cout << dateString << " => " << value << " => " << bitcoinValue << std::fixed << std::setprecision(2) << std::endl;
     }
     infile.close();
 }
@@ -105,18 +99,31 @@ bool BitcoinExchange::checkInputAmount(std::string inputValue)
     bool noError = true;
     if (inputValue.length() == 0)
         noError = false;
+    bool success = true;
     if (noError)
     {
-        float value = std::stod(inputValue);
+        float value = std::stof(inputValue);
         for (size_t i = 0; i < inputValue.length(); i++)
         {
             if (!isdigit(inputValue[i]) && inputValue[i] != '.' && inputValue[i] != '-')
+            success = false;
+            break ;
+        }
+        if (!success)
+	    {
+            std::cout << "Error: not a number => " << value << std::endl;
+            return (false);
+	    }
+        if (value < 0)
+        {
+            std::cerr << "Error: not a positive number." << std::endl;
             return false;
         }
-        if (value < 0)
-            std::cout << "Error: not a positive number." << std::endl;
         if (value > 1000)
-            std::cout << "Error: too large a number." << std::endl;	
+        {
+            std::cerr << "Error: too large a number." << std::endl;	
+            return false;
+        }
     }
     return true;	
 }

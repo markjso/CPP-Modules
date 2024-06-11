@@ -27,10 +27,10 @@ class MutantStack : public std::stack<T>
 			*this = copy;
 		}
 
-		MutantStack<T> &operator=(MutantStack<T> const & copy)
-		{
-			if (this != &copy)
-				this->c = copy.c;
+									MutantStack<T> &operator=(MutantStack<T> const & copy)
+									{
+										if (this != &copy)
+											this->c = copy.c;
 			return *this;
 		}
 
