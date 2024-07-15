@@ -70,14 +70,21 @@ int	PmergeMe::binarySearchVector(const std::vector<int> &sorted, int element)
 	int	right = sorted.size() - 1;
 	while (left <= right)
 	{
+		// calculate the middle index
 		int	mid = left + (right - left) / 2;
+		// if the element at the middle index is the element we are looking for, return the index
 		if (sorted[mid] == element)
 			return mid;
+		// if the element is greater than the element at the mid index it must be in the right half
+		// so move the left index to mid + 1	
 		if (sorted[mid] < element)
 			left = mid + 1;
+		// if the element is less than the element at the mid index it must be in the left half
+		// so move the right index to mid - 1	
 		else
 			right = mid - 1;
 	}
+	// return the left index. This is the index where the element should be inserted
 	return (left);
 }
 
@@ -85,7 +92,9 @@ void    PmergeMe::insertSmallestElementsVector(std::vector<int> &sorted, const s
 {
 	for (size_t i = 0; i < smaller.size(); ++i)
 	{
+		// find the correct position to insert the element (smaller[i])
 		int position = binarySearchVector(sorted, smaller[i]);
+		// use insert iterator to insert smaller[i] at the correct position(index)
 		sorted.insert(sorted.begin() + position, smaller[i]);
 	}
 }
@@ -95,6 +104,7 @@ std::vector<int>PmergeMe::mergeInsertSortVector(std::vector<int>& vecElements)
     int	n = vecElements.size();
 	if (n <= 1)
 		return (vecElements);
+	// create a vecotr of pairs of elements
 	// performing n/2 comparisions to create n/2 pairs
 	// sorting the pairs by the larger element
 	std::vector<std::pair<int, int> > pairs;
@@ -105,10 +115,11 @@ std::vector<int>PmergeMe::mergeInsertSortVector(std::vector<int>& vecElements)
 		else if (vecElements[i] < vecElements[i + 1])
 			pairs.push_back(std::make_pair(vecElements[i + 1], vecElements[i]));
 	}
+	// if the number of elements is odd, add the last element to INT_MIN
 	if (n % 2 == 1)
 		pairs.push_back(std::make_pair(vecElements[n - 1], INT_MIN));
 
-	// recursively sort the larger elements from the pairs to create sorted sequence
+	// sort the larger and smaller elements into separate vectors
 	std::vector<int>	larger;
 	std::vector<int>	sorted;
 	std::vector<int>	smaller;
@@ -119,11 +130,13 @@ std::vector<int>PmergeMe::mergeInsertSortVector(std::vector<int>& vecElements)
 		if (pairs[i].second != INT_MIN)
 			smaller.push_back(pairs[i].second);
 	}
+	// sort the larger elements recursively
 	sorted = larger;
 	mergeInsertSortVector(sorted);
 
 	// insert the smaller elements into the sorted sequence
 	// uses the binary search to determine the correct position
+	// return the sorted vector
 	insertSmallestElementsVector(sorted, smaller);
 	vecElements = sorted;
 	return (sorted);
