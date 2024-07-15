@@ -6,7 +6,7 @@
 #    By: jmarks <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 16:31:15 by jmarks            #+#    #+#              #
-#    Updated: 2023/03/08 15:51:59 by jmarks           ###   ########.fr        #
+#    Updated: 2024/07/15 10:44:53 by jmarks           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CFLAGS=-Wall -Wextra -Werror -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CLFAGS) -o $(NAME) $(OBJS) 
+	$(CC) $(CFlAGS) -o $(NAME) $(OBJS) 
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 #    By: jmarks <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/07 16:31:15 by jmarks            #+#    #+#              #
-#    Updated: 2023/03/07 16:31:28 by jmarks           ###   ########.fr        #
+#    Updated: 2024/07/15 10:47:31 by jmarks           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ OBJS=$(SRCS:.cpp=.o)
 
 CC=c++
 
-CFLAGS=-Wall -Wextra -Werror -I -std=c++98
+CFLAGS=-Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CLFAGS) -o $(NAME) $(OBJS) 
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) 
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
